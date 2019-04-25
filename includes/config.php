@@ -2,12 +2,12 @@
 
 header("Content-type: text/html; charset=utf-8");
 
-/*$dbhost = "127.0.0.1";
+$dbhost = "127.0.0.1";
 
 $dbuser = "root";
-$dbpass = "12345";
+$dbpass = "augus";
 
-$dbname = "book";*/
+$dbname = "SNIKGpLDiTxxINZtalbX";
 
 
 
