@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>预约猫预约管理系统</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+
+   <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="plugins/morris/morris.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+
+ <link rel="stylesheet" href="plugins/select2/select2.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="plugins/iCheck/all.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+ <link rel="shortcut icon" href="app/images/cat16.ico" type="image/x-icon"/>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+{_INCLUDE head.html}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+     <section class="content-header">
+      <h1>
+        商家资料
+        <small>修改好你的服务资源，便于客户预定</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="index.php?m=user&act=index"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a href="#">资源管理</a></li>
+        <li class="active">资源编辑</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+     <section class="content">
+        {_IF msgnum>0}
+        <div class="callout callout-danger">
+         
+          <!--<h4>提醒!</h4>
+
+          <p>1.填写商家资料，包括商家地址，商家服务简介等，保存后上传商家门店logo或者照片 <a href="index.php?m=user&act=profile"> 前往</a><br>
+            2.填写服务 菜单-》服务管理-》发布服务 填写服务资料，服务的营业时间需要正确填写 填写好保存 然后上传服务图片，服务图片可以上传多张图片 文件名不能用中文 <a href="index.php?m=user&act=resList"> 前往</a><br>
+            3.详情-->请点击右上角小闹钟前去完善资料
+            </p>
+        </div>
+        {ENDIF}
+    
+      <div class="row">
+
+
+
+     <div class="col-md-7">
+          <!-- Horizontal Form -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">商家资料修改</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" method=post active="" >
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">用户名称</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" id="inputEmail3" placeholder="" value={_name}>
+                     <input type="hidden"  name="id"  value={_id}>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">注册电话</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" name="mobile" value="{_mobile}" class="form-control" id="inputPassword3" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">商家名称</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" name="username" value="{_username}"" class="form-control" id="inputPassword3" placeholder="">
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label" placeholder="填写业务介绍，特殊说明等">商家介绍</label>
+
+                  <div class="col-sm-10">
+                    <textarea name="into" class="form-control">
+                      {_into}
+                    </textarea>
+                 
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">服务电话</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" name="service_tel" value="{_service_tel}"" class="form-control" id="inputPassword3" placeholder="">
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">地址</label>
+
+                  <div class="col-sm-3">
+                    <select name="city" >
+                     {_FOREACH cities city}
+                      <option value="{_name}" {_IF name=_city} selected {ENDIF} >{_name}</option>
+                     {ENDFOR}
+                     
+                    </select>
+                  </div>
+                  <div class="col-sm-7">
+                    <input type="text" name="address" value="{_address}"" class="form-control" id="inputPassword3" placeholder="">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">修改密码</label>
+
+                  <div class="col-sm-5">
+                    <input type="password" name="passwd" value="" class="form-control" id="inputPassword3" placeholder="密码">
+                  </div>
+                  <div class="col-sm-5">
+                    <input type="password" name="passagain" value="" class="form-control" id="inputPassword3" placeholder="重复密码">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">商家类型</label>
+
+                  <div class="col-sm-10">
+                   
+                    <select name='type'  class="form-control" id="inputPassword3" >
+                    {_FOREACH typelist type}
+                      <option value={_id} {_IF id=_type} selected {ENDIF}>{_name}</option>
+                      {ENDFOR}
+                     
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">销售姓名</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" name="sales" value="{_sales}" class="form-control" id="inputPassword3" placeholder="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">分成比例</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" name="rate" value="{_rate}" class="form-control" id="inputPassword3" placeholder="0.10">
+                  </div>
+                </div>
+
+                 
+                  
+               
+
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox col-sm-6">
+                      <label>
+                        <input type="checkbox" name="ispublic" value="0" {_IF ispublic=0} checked="checked"{ENDIF}> 私有
+                      </label>
+                    </div>
+                    <div class="col-sm-6">
+                      <a href="app\index.php?act=shop&id={_id}" target="_blank">预览</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+            
+
+              <div class="box-footer">
+              <button type="submit" class="btn btn-primary">提交</button>
+               
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
+        </div>
+
+         <div class="col-md-5">
+          <!-- Horizontal Form -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">图片上传</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="">
+              <div class="box-body">
+             {_IF pic}
+                <div class="form-group col-sm-12">
+            
+                  <img class="img-responsive" src="{_pic}" alt="Photo">
+                         
+
+                </div>
+              {ELSE}
+              <h1><font color="#F00">请上传图片</font></h1>
+             {ENDIF}
+             {_IF backpic}
+                <div class="form-group col-sm-12">
+            
+                  <img class="img-responsive" src="{_backpic}" alt="Photo">
+                         
+
+                </div>
+             {ENDIF}
+             {_IF licensepic}
+                <div class="form-group col-sm-12">
+            
+                  <img class="img-responsive" src="{_licensepic}" alt="Photo">
+                         
+
+                </div>
+             {ENDIF}
+
+                 <div class="form-group">
+                  <label for="exampleInputFile" class="col-sm-2 control-label">上传图片</label>
+                   <div class="col-sm-10">
+
+                    <input type="file" name="f1" id="exampleInputFile">
+                    <input type="hidden" name="serviceid" value={_id} >
+                    <br>
+                    <select name="type" >
+                      <option value="头像">logo</option>
+                       <option value="背景">背景</option>
+                       <option value="营业执照">营业执照</option>
+                    </select>
+                    <p class="help-block">图片要求小于2M,jpg格式</p>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+            
+
+              <div class="box-footer">
+              <button type="submit" class="btn btn-primary">提交</button>
+               
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
+        </div>
+        </div>
+        </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{_INCLUDE foot.html}
+
+<!-- jQuery 2.2.3 -->
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+
+<script src="plugins/input-mask/jquery.inputmask.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- date-range-picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+
+<!-- bootstrap datepicker -->
+<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+
+<!-- bootstrap time picker -->
+<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
+<!-- iCheck 1.0.1 -->
+<script src="plugins/iCheck/icheck.min.js"></script>
+<!-- FastClick -->
+<!-- FastClick -->
+<script src="plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+
+
+
+
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    /*$('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });*/
+     
+
+    //Datemask dd/mm/yyyy
+    $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+    //Datemask2 mm/dd/yyyy
+    $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+    //Money Euro
+    $("[data-mask]").inputmask();
+
+    //Date range picker
+    $('#reservation').daterangepicker();
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+        {
+          ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+          },
+          startDate: moment().subtract(29, 'days'),
+          endDate: moment()
+        },
+        function (start, end) {
+          $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        }
+    );
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    });
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue'
+    });
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass: 'iradio_minimal-red'
+    });
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass: 'iradio_flat-green'
+    });
+
+
+
+    //Timepicker
+    $(".timepicker").timepicker({
+      showInputs: false
+    });
+  });
+</script>
+</body>
+</html>

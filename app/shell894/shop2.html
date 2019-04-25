@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>店铺-别人看到的</title>
+<meta content="易工场" name="keywords">
+<meta content="易工场" name="description">
+<meta http-equiv="Cache-Control" content="max-age=180">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link href="font/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="css/basestyle.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script src="js/iscroll-probe.js"></script>
+<script>
+var myScroll;
+var pullDownFlag,pullUpFlag;
+var pullDown,pullUp;
+var spinner;
+function positionJudge(){
+    if(this.y>40){    //判断下拉
+        pullDown.innerHTML = "放开刷新页面";
+        pullDownFlag = 1;
+    }else if(this.y<(this.maxScrollY-40)){   //判断上拉
+        pullUp.innerHTML = "加载页面";
+        pullUpFlag = 1;
+    }
+}
+function action(){
+    if(pullDownFlag==1){
+        pullDownAction();
+        pullDown.innerHTML = "下拉加载页面…";
+        pullDownFlag = 0;
+    }else if(pullUpFlag==1){
+        pullUpAction();
+        pullUp.innerHTML = "上拉刷新…";
+        pullUpFlag = 0;
+    }
+}
+function loaded(){
+    pullDownFlag = 0;
+    pullUpFlag = 0;
+    pullDown = document.getElementById("pullDown");
+    pullUp = document.getElementById("pullUp");
+    spinner = document.getElementById("spinner");
+    myScroll = new IScroll("#wrapper",{
+        probeType: 3,
+//        momentum: false,//关闭惯性滑动
+        mouseWheel: true,//鼠标滑轮开启
+        scrollbars: true,//滚动条可见
+        fadeScrollbars: true,//滚动条渐隐
+        interactiveScrollbars: true,//滚动条可拖动
+        shrinkScrollbars: 'scale', // 当滚动边界之外的滚动条是由少量的收缩
+        useTransform: true,//CSS转化
+        useTransition: true,//CSS过渡
+        bounce: true,//反弹
+        freeScroll: false,//只能在一个方向上滑动
+        startX: 0,
+        startY: 0,
+//        snap: "li",//以 li 为单位
+    });
+    myScroll.on('scroll',positionJudge);
+    myScroll.on("scrollEnd",action);
+}
+
+function updatePosition(){
+pullDown.innerHTML = this.y>>0;
+}
+document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+}, false);
+document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+}, false);
+myScroll.on('scroll',positionJudge);
+myScroll.on("scrollEnd",action);
+</script>
+</head>
+<body onload="loaded()">
+<div class="back-btn"><a href="index.html"></a></div>
+<div id="wrapper">
+  <div id="scroller" class="mmq-box">
+    <div id="pullDown"> <span>下拉刷新…</span> </div>
+    <div class="mine-header">
+      <div class="user-info">
+        <div class="t-pic"><a href="huantouxiang.html"><img src="images/touxiang2.png" /></a></div>
+        <div class="t-info">
+          <div class="name">
+            <h2>美丽的姑娘</h2>
+            <i class="icon iconfont">&#xe614;</i></div>
+          <div class="gz-sl-box"> <a class="" href="javascropt:;">私聊ta</a> <a class="gz" href="javascropt:;">＋关注</a> </div>
+        </div>
+      </div>
+    </div>
+    <div class="shop-tit">
+      <dl>
+        <dd><em class="num">99</em>
+          <p>ta的粉丝</p>
+        </dd>
+        <dd><em class="num">19</em>
+          <p>ta的关注</p>
+        </dd>
+        <dd><em class="num">19</em>
+          <p>ta的产品</p>
+        </dd>
+      </dl>
+    </div>
+    <ul id="list" class="shop-con" style="padding-bottom:0;">
+      <li> <a href="proinfo.html"><span><img src="upload/proimg.jpg"></span>
+        <div class="pri">￥<em class="num">12.50</em></div>
+        </a> <a href="proinfo.html"><span><img src="upload/proimg.jpg"></span>
+        <div class="pri">￥<em class="num">12.50</em></div>
+        </a> <a href="proinfo.html"><span><img src="upload/proimg.jpg"></span>
+        <div class="pri">￥<em class="num">12.50</em></div>
+        </a>
+      <li>
+      <li> <a href="proinfo.html"><span><img src="upload/proimg.jpg"></span>
+        <div class="pri">￥<em class="num">12.50</em></div>
+        </a> <a href="proinfo.html"><span><img src="upload/proimg.jpg"></span>
+        <div class="pri">￥<em class="num">12.50</em></div>
+        </a> <a href="proinfo.html"><span><img src="upload/proimg.jpg"></span>
+        <div class="pri">￥<em class="num">12.50</em></div>
+        </a>
+      <li>
+      <li> <a href="proinfo.html"><span><img src="upload/proimg.jpg"></span>
+        <div class="pri">￥<em class="num">12.50</em></div>
+        </a> <a href="proinfo.html"><span><img src="upload/proimg.jpg"></span>
+        <div class="pri">￥<em class="num">12.50</em></div>
+        </a> <a href="proinfo.html"><span><img src="upload/proimg.jpg"></span>
+        <div class="pri">￥<em class="num">12.50</em></div>
+        </a>
+      <li>
+    </ul>
+    <div id="pullUp"><span>123</span></div>
+  </div>
+</div>
+</body>
+</html>

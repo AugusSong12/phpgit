@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>发布会2</title>
+<meta content="易工场" name="keywords">
+<meta content="易工场" name="description">
+<meta http-equiv="Cache-Control" content="max-age=180">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link href="font/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="css/swiper-3.3.1.min.css" rel="stylesheet" type="text/css" />
+<link href="css/basestyle.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/swiper-3.3.1.jquery.min.js"></script>
+</head>
+<body>
+<div id="fbh-slid-pic">
+<!-- Swiper -->
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide" style="background-image:url(upload/fbh-list-pic02.jpg); background-repeat:no-repeat;"><div class="fbh-list-txt">68路环球巴士小伙帮们怀揣梦想一起旅行</div></div>
+    <div class="swiper-slide" style="background-image:url(upload/fbh-list-pic03.jpg); background-repeat:no-repeat;"><div class="fbh-list-txt">68路环球巴士小伙帮们怀揣梦想一起旅行</div></div>
+    <div class="swiper-slide" style="background-image:url(upload/fbh-list-pic01.jpg); background-repeat:no-repeat;"><div class="fbh-list-txt">68路环球巴士小伙帮们怀揣梦想一起旅行</div></div>
+    <div class="swiper-slide" style="background:#000;"><div class="loader3"><span></span><span></span></div></div>
+  </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+  <!-- Add Arrows -->
+<!--  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>-->
+</div>
+<style>
+    .swiper-container {
+		position:absolute;
+		left:0;
+		right:0;
+		top:0;
+		bottom:0;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+		height:100%;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+		position:relative;
+		background-size:cover;
+		background-position:center center;
+    }
+	.swiper-pagination-bullet-active{ width:10px; height:10px; background:#fff; border-radius:12px;}
+	.swiper-container-horizontal>.swiper-pagination{text-align:right; bottom:1.5rem; padding-right:1rem; box-sizing:border-box;}
+</style>
+
+<div class="back-btn"><a href="index.html"></a></div>
+<div class="fbh-gz-btn"><a href="javascript:;">+关注</a></div>
+<div class="fbh-txt-line"></div>
+<div class="fbh-foot tab">
+  <div class="fbh-list-btn">
+    <a href="index.html"><i class="icon-v3 index"></i></a>
+    <a href="javascript:;" class=""><i class="icon-v3 share"></i></a>
+  </div>
+</div>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 1,
+        paginationClickable: true,
+        spaceBetween: 0,
+        keyboardControl: true,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+		onReachEnd: function(swiper){
+        $("#fbh-slid-pic").fadeOut(1000);
+		$("#wrapper-page").fadeIn(1000);
+      }
+    });
+</script>
+</div>
+
+
+
+<div id="wrapper-page" style="display:none;">
+  <div id="scroller" class="fbh-pro-wrap">
+    <ul id="list">
+      <li class="tab">
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;" class="active"></a><span>23</span></div>
+          </div>
+        </div>
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;"></a><span>23</span></div>
+          </div>
+        </div>
+      </li>
+      <li class="tab">
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;"></a><span>23</span></div>
+          </div>
+        </div>
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;"></a><span>23</span></div>
+          </div>
+        </div>
+      </li>
+      <li class="tab">
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;"></a><span>23</span></div>
+          </div>
+        </div>
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;"></a><span>23</span></div>
+          </div>
+        </div>
+      </li>
+      <li class="tab">
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;"></a><span>23</span></div>
+          </div>
+        </div>
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;"></a><span>23</span></div>
+          </div>
+        </div>
+      </li>
+      <li class="tab">
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;"></a><span>23</span></div>
+          </div>
+        </div>
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;"></a><span>23</span></div>
+          </div>
+        </div>
+      </li>
+      <li class="tab">
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;"></a><span>23</span></div>
+          </div>
+        </div>
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;"></a><span>23</span></div>
+          </div>
+        </div>
+      </li>
+      <li class="tab">
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;"></a><span>23</span></div>
+          </div>
+        </div>
+        <div class="fbh-pro-list">
+          <div class="fbh-pro">
+            <div class="fbh-pro-img"><a href="proinfo2.html"><img src="upload/fbh-pro.jpg" /></a></div>
+            <div class="fbh-pro-pri txt-yel"><span class="yahei">￥</span>328.00</div>
+            <div class="fbh-pro-tit">行李箱、拉杆箱</div>
+            <div class="fbh-pro-gz"><a href="javascript:;"></a><span>23</span></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

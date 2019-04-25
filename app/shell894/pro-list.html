@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>商品管理</title>
+<meta content="易工场" name="keywords">
+<meta content="易工场" name="description">
+<meta http-equiv="Cache-Control" content="max-age=180">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link href="font/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="css/basestyle.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script src="js/iscroll-probe.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+      $("img.lazy").lazyload({effect: "show"});
+  });
+</script>
+<script>
+var myScroll;
+var pullDownFlag,pullUpFlag;
+var pullDown,pullUp;
+var spinner;
+function positionJudge(){
+    if(this.y>40){    //判断下拉
+        pullDown.innerHTML = "放开刷新页面";
+        pullDownFlag = 1;
+    }else if(this.y<(this.maxScrollY-40)){   //判断上拉
+        pullUp.innerHTML = "加载页面";
+        pullUpFlag = 1;
+    }
+}
+function action(){
+    if(pullDownFlag==1){
+        pullDownAction();
+        pullDown.innerHTML = "下拉加载页面…";
+        pullDownFlag = 0;
+    }else if(pullUpFlag==1){
+        pullUpAction();
+        pullUp.innerHTML = "上拉刷新…";
+        pullUpFlag = 0;
+    }
+}
+function loaded(){
+    pullDownFlag = 0;
+    pullUpFlag = 0;
+    pullDown = document.getElementById("pullDown");
+    pullUp = document.getElementById("pullUp");
+    spinner = document.getElementById("spinner");
+    myScroll = new IScroll("#wrapper",{
+        probeType: 3,
+//        momentum: false,//关闭惯性滑动
+        mouseWheel: true,//鼠标滑轮开启
+        scrollbars: true,//滚动条可见
+        fadeScrollbars: true,//滚动条渐隐
+        interactiveScrollbars: true,//滚动条可拖动
+        shrinkScrollbars: 'scale', // 当滚动边界之外的滚动条是由少量的收缩
+        useTransform: true,//CSS转化
+        useTransition: true,//CSS过渡
+        bounce: true,//反弹
+        freeScroll: false,//只能在一个方向上滑动
+        startX: 0,
+        startY: 0,
+//        snap: "li",//以 li 为单位
+    });
+    myScroll.on('scroll',positionJudge);
+    myScroll.on("scrollEnd",action);
+}
+
+function updatePosition(){
+pullDown.innerHTML = this.y>>0;
+}
+document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+}, false);
+document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+}, false);
+myScroll.on('scroll',positionJudge);
+myScroll.on("scrollEnd",action);
+</script>
+</head>
+<body onload="loaded()" style="background:#fff;">
+<div class="pro-management tab">
+      <a href="#" class="active"><span>已上架</span></a>
+      <a href="#"><span>审核中</span></a>
+      <a href="#"><span>未通过</span></a>
+      <a href="#"><span>已下架</span></a>
+</div>
+<div id="wrapper" style="top:50px;">
+  <div id="scroller">
+    <div id="pullDown"> <span>下拉刷新…</span> </div>
+    <ul id="list">
+      <li>
+        <div class="prolistbox">
+          <div class="proimg"><img src="upload/list3.jpg" /></div>
+          <div class="proinfo">
+            <div class="txt">这里是产品介绍而不是产品标题，这里是产品介绍而不是产品标题</div>
+            <div class="pri">￥<span>499.55</span></div>
+            <div class="day-opt">
+              <div class="day">交货周期<span>3-8</span>天</div>
+              <div class="opt tab"><a href="javascript:;"><img src="images/dele-icon3.png" /></a><a href="javascript:;">下架</a><a href="javascript:;">上架</a><a href="javascript:;">编辑</a></div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="prolistbox">
+          <div class="proimg"><img src="upload/list3.jpg" /></div>
+          <div class="proinfo">
+            <div class="txt">这里是产品介绍而不是产品标题，这里是产品介绍而不是产品标题</div>
+            <div class="pri">￥<span>499.55</span></div>
+            <div class="day-opt">
+              <div class="day">交货周期<span>3-8</span>天</div>
+              <div class="opt tab"><a href="javascript:;"><img src="images/dele-icon3.png" /></a><a href="javascript:;">下架</a><a href="javascript:;">上架</a><a href="javascript:;">编辑</a></div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="prolistbox">
+          <div class="proimg"><img src="upload/list3.jpg" /></div>
+          <div class="proinfo">
+            <div class="txt">这里是产品介绍而不是产品标题，这里是产品介绍而不是产品标题</div>
+            <div class="pri">￥<span>499.55</span></div>
+            <div class="day-opt">
+              <div class="day">交货周期<span>3-8</span>天</div>
+              <div class="opt tab"><a href="javascript:;"><img src="images/dele-icon3.png" /></a><a href="javascript:;">下架</a><a href="javascript:;">上架</a><a href="javascript:;">编辑</a></div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="prolistbox">
+          <div class="proimg"><img src="upload/list3.jpg" /></div>
+          <div class="proinfo">
+            <div class="txt">这里是产品介绍而不是产品标题，这里是产品介绍而不是产品标题</div>
+            <div class="pri">￥<span>499.55</span></div>
+            <div class="day-opt">
+              <div class="day">交货周期<span>3-8</span>天</div>
+              <div class="opt tab"><a href="javascript:;"><img src="images/dele-icon3.png" /></a><a href="javascript:;">下架</a><a href="javascript:;">上架</a><a href="javascript:;">编辑</a></div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="prolistbox">
+          <div class="proimg"><img src="upload/list3.jpg" /></div>
+          <div class="proinfo">
+            <div class="txt">这里是产品介绍而不是产品标题，这里是产品介绍而不是产品标题</div>
+            <div class="pri">￥<span>499.55</span></div>
+            <div class="day-opt">
+              <div class="day">交货周期<span>3-8</span>天</div>
+              <div class="opt tab"><a href="javascript:;"><img src="images/dele-icon3.png" /></a><a href="javascript:;">下架</a><a href="javascript:;">上架</a><a href="javascript:;">编辑</a></div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="prolistbox">
+          <div class="proimg"><img src="upload/list3.jpg" /></div>
+          <div class="proinfo">
+            <div class="txt">这里是产品介绍而不是产品标题，这里是产品介绍而不是产品标题</div>
+            <div class="pri">￥<span>499.55</span></div>
+            <div class="day-opt">
+              <div class="day">交货周期<span>3-8</span>天</div>
+              <div class="opt tab"><a href="javascript:;"><img src="images/dele-icon3.png" /></a><a href="javascript:;">下架</a><a href="javascript:;">上架</a><a href="javascript:;">编辑</a></div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div id="pullUp"><span>123</span></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>展会列表</title>
+<meta content="易工场" name="keywords">
+<meta content="易工场" name="description">
+<meta http-equiv="Cache-Control" content="max-age=180">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link href="font/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="css/basestyle.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/swiper.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script src="js/scroll.js"></script>
+<script src="js/iscroll-probe.js"></script>
+<script>
+var myScroll;
+var pullDownFlag,pullUpFlag;
+var pullDown,pullUp;
+var spinner;
+function positionJudge(){
+    if(this.y>40){    //判断下拉
+        pullDown.innerHTML = "放开刷新页面";
+        pullDownFlag = 1;
+    }else if(this.y<(this.maxScrollY-40)){   //判断上拉
+        pullUp.innerHTML = "加载页面";
+        pullUpFlag = 1;
+    }
+}
+function action(){
+    if(pullDownFlag==1){
+        pullDownAction();
+        pullDown.innerHTML = "下拉加载页面…";
+        pullDownFlag = 0;
+    }else if(pullUpFlag==1){
+        pullUpAction();
+        pullUp.innerHTML = "上拉刷新…";
+        pullUpFlag = 0;
+    }
+}
+function loaded(){
+    pullDownFlag = 0;
+    pullUpFlag = 0;
+    pullDown = document.getElementById("pullDown");
+    pullUp = document.getElementById("pullUp");
+    spinner = document.getElementById("spinner");
+    myScroll = new IScroll("#wrapper",{
+        probeType: 3,
+//        momentum: false,//关闭惯性滑动
+        mouseWheel: true,//鼠标滑轮开启
+        scrollbars: true,//滚动条可见
+        fadeScrollbars: true,//滚动条渐隐
+        interactiveScrollbars: true,//滚动条可拖动
+        shrinkScrollbars: 'scale', // 当滚动边界之外的滚动条是由少量的收缩
+        useTransform: true,//CSS转化
+        useTransition: true,//CSS过渡
+        bounce: true,//反弹
+        freeScroll: false,//只能在一个方向上滑动
+        startX: 0,
+        startY: 0,
+//        snap: "li",//以 li 为单位
+    });
+    myScroll.on('scroll',positionJudge);
+    myScroll.on("scrollEnd",action);
+}
+function pullDownAction(){
+    spinner.style.display = "block";
+    setTimeout(function(){
+        spinner.style.display = "none";
+        myScroll.refresh();
+    },1000);
+}
+function pullUpAction(){
+    spinner.style.display = "block";
+    setTimeout(function(){
+        spinner.style.display = "none";
+        myScroll.refresh();
+    },1000);
+}
+function updatePosition(){
+pullDown.innerHTML = this.y>>0;
+}
+document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+}, false);
+document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+}, false);
+myScroll.on('scroll',positionJudge);
+myScroll.on("scrollEnd",action);
+</script>
+</head>
+
+<body onload="loaded()">
+<div id="wrapper" style="background:#f6f6f6">
+  <div id="scroller">
+    <div id="pullDown"> <span>下拉刷新…</span> </div>
+    <ul id="list">
+      <li onclick="javascript:window.location.href='b博览会-正在开展.html'">
+        <div class="exhibitionItems">
+          <div class="tit tab">
+            <div class="exh-label now"><i class="zzkz-icon"></i>正在开展</div>
+            <h1>2016年宿迁火红七月汽车展</h1>
+          </div>
+          <div class="img"><img src="upload/blh_ban01.jpg" /></div>
+          <div class="twopart tab"><span><i class="blh-gz-icon"></i><em>2035</em>人关注</span><span><i class="blh-cz-icon"></i><em>287</em>家参展商</span></div>
+          <div class="booth">
+            <p>展位：W1、W2、E1、E2</p><p>时间：2016.10.12-2016.10-19</p>
+          </div>
+        </div>
+      </li>
+      <li onclick="javascript:window.location.href='b博览会-正在开展.html'">
+        <div class="exhibitionItems">
+          <div class="tit tab">
+            <div class="exh-label now"><i class="zzkz-icon"></i>正在开展</div>
+            <h1>2016年宿迁火红七月汽车展</h1>
+          </div>
+          <div class="img"><img src="upload/blh_ban01.jpg" /></div>
+          <div class="twopart tab"><span><i class="blh-gz-icon"></i><em>2035</em>人关注</span><span><i class="blh-cz-icon"></i><em>287</em>家参展商</span></div>
+          <div class="booth">
+            <p>展位：W1、W2、E1、E2</p><p>时间：2016.10.12-2016.10-19</p>
+          </div>
+        </div>
+      </li>
+      <li onclick="javascript:window.location.href='b博览会-展会预报.html'">
+        <div class="exhibitionItems">
+          <div class="tit tab">
+            <div class="exh-label later"><i class="zhyb-icon"></i>6月12日开展</div>
+            <h1>2016年宿迁火红七月汽车展</h1>
+          </div>
+          <div class="img"><img src="upload/blh_ban01.jpg" /></div>
+          <div class="twopart tab"><span><i class="blh-gz-icon"></i><em>2035</em>人关注</span><span><i class="blh-cz-icon"></i><em>287</em>家参展商</span></div>
+          <div class="booth">
+            <p>展位：W1、W2、E1、E2</p><p>时间：2016.10.12-2016.10-19</p>
+          </div>
+        </div>
+      </li>
+      <li onclick="javascript:window.location.href='b博览会-展会预报.html'">
+        <div class="exhibitionItems">
+          <div class="tit tab">
+            <div class="exh-label later"><i class="zhyb-icon"></i>7月12日开展</div>
+            <h1>2016年宿迁火红七月汽车展</h1>
+          </div>
+          <div class="img"><img src="upload/blh_ban01.jpg" /></div>
+          <div class="twopart tab"><span><i class="blh-gz-icon"></i><em>2035</em>人关注</span><span><i class="blh-cz-icon"></i><em>287</em>家参展商</span></div>
+          <div class="booth">
+            <p>展位：W1、W2、E1、E2</p><p>时间：2016.10.12-2016.10-19</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div id="pullUp"><span>123</span></div>
+  </div>
+</div>
+<div class="ft-blank"></div>
+<div class="wx-footer2 tab">
+  <a href="index.html" class="active"><i class="icon-v2 fbh"></i><p>博览会</p></a>
+  <a href="guang.html" class=""><i class="icon-v2 guang"></i><p>逛</p></a>
+  <a href="maimaiquan.html" class=""><i class="icon-v2 mmq"></i><p>买卖圈</p></a>
+  <a href="wode.html" class=""><i class="icon-v2 wo"></i><p>我</p></a>
+</div>
+</body>
+</html>

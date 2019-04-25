@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>领取礼物</title>
+<meta content="易工场" name="keywords">
+<meta content="易工场" name="description">
+<meta http-equiv="Cache-Control" content="max-age=180">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link href="font/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="css/basestyle.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+</head>
+<body>
+  <div class="wx-top">
+    <div class="top-title">领取礼物</div>
+  </div>
+  <div class="top-blank"></div>
+  <div class="suc-tishi">
+    <img src="images/suc-icon.png" />
+    <div class="tab">
+    <h1>已支付<span>您的朋友已经支付完成</span></h1>
+    </div>
+  </div>
+  <div class="orderListBox">
+    <div class="order-tab" onclick="javascript:window.location.href='proinfo.html'">
+      <div class="odr-con">
+        <div class="odrprolist-img"><img src="upload/proimg.jpg"></div>
+        <div class="odrprolist-txt">
+          <h3>戴尔（DELL）Vostro 3800-R6308 台式电脑（i3-4170 4G 500G DDELL）Vostro 3800-R6308 台式电脑（i3-4170 4G 500G DDELL）Vostro 3800-R6308 台式电脑（i3-4170 4G 500G DVD 三年上门服务 Win7）黑</h3>
+          <div class="tab odr-info">
+            <div class="fr grey">订单号：<em class="num green">2316546421654</em></div>
+            <div class="listpri red fl">￥<em class="num">24.00</em></div>
+          </div>
+        </div>
+      </div>
+      <div class="odr-num">
+        <div class="shuliang">购买数量<em>1000</em></div>
+        <div class="opt-btn-order">
+          <div class="odrpri">总价<span>￥<em>1000</em></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mz-user-info">
+    <div class="mz-user-tit">收货地址</div>
+    <div class="mz-user-con">
+      <ul class="tab">
+        <li><span>收货人</span><input type="text" name="" class="mz-ipt-txt" placeholder="请输入姓名"></li>
+        <li><span>手机号码</span><input type="text" name="" class="mz-ipt-txt" placeholder="请输入常用的手机号码"></li>
+        <li><span>所在地区</span><select class="mz-ipt-sec"><option>请选择地区</option><option>北京</option><option>上海</option></select></li>
+        <li><span>详细地址</span><input type="text" name="" class="mz-ipt-txt" placeholder="街道楼牌号等"></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mz-user-info">
+    <div class="mz-user-tit">定制信息</div>
+    <div class="mz-user-con">
+      <ul class="tab">
+        <li><span>身高(cm)</span><input type="text" name="" class="mz-ipt-txt"></li>
+        <li><span>腰围(cm)</span><input type="text" name="" class="mz-ipt-txt"></li>
+        <li><span>胸围(cm)</span><input type="text" name="" class="mz-ipt-txt"></li>
+      </ul>
+    </div>
+  </div>
+  <a href="#loginmodal" class="fk_sub fx" id="modaltrigger">提交领取礼物</a>
+  <div id="loginmodal" style="display:none;">
+    <h1>请输入提取码</h1>
+    <form id="loginform" name="loginform" method="post" action="index.html">
+      <input type="text" name="username" id="username" class="txtfield" tabindex="1" />  
+      <div class="center">
+        <button id="loginbtn" class="flatbtn-blu hidemodal">提交</button>
+      </div>
+    </form>
+  </div>
+  <script type="text/javascript">
+$(function(){
+
+  $('#loginform').submit(function(e){
+    return false;
+  });
+  
+  //弹出层调用语句
+  $('#modaltrigger').leanModal({
+    top:110,
+    overlay:0.45,
+    closeButton:".hidemodal"
+  });
+  
+});
+</script>
+
+</body>
+</html>

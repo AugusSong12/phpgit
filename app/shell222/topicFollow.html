@@ -1,0 +1,569 @@
+<!DOCTYPE HTML>
+
+<html lang="en-US">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="keywords" content="" />
+
+<meta name="description" content="" />
+
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'/>
+
+<link href="m.css" rel="stylesheet" type="text/css" />
+
+<title>{_type} {_title} 召唤峡谷</title>
+
+<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+
+<script src="js/manhuatoTop.1.0.js" type="text/javascript"></script>
+
+<script src="js/common.js" type="text/javascript"></script>
+
+</head>
+
+
+
+<body>
+
+<div id="frame" style="margin-bottom:50px;">
+
+	<div id="top">
+
+		<a id="logo" href="../index.php?act=index"><img src="images/home.png" align="top"></a>
+		<a id="title">{_type}详情</a>
+
+		<!--a id="search" href="search.jsp"><img src="images/search.png" align="top"></a-->
+
+		<span id="list"><a href="index.php?act=topicList&type={_type}"><img src="images/goback.png" align="top"></a>
+
+		
+
+		  <a href="../index.php?act=login"><img src="images/userlogin.png" align="top"></a>
+
+
+		
+
+		</span>
+
+	</div>
+
+	<div id="con">
+
+		<div class="tour_div">
+
+			<div class="tour_title tc0">{_title} 【截止：{_enddt}】<hr> {_content} <br><small>访问次数:{_viewtimes} 跟帖:{_flowtimes} 最后回帖：{_updatedt}</small></div>
+
+			{_IF serviceid}
+
+			<div class="tour_img">
+
+				
+
+					<img src="../../{_service.pic}" width="100%">
+
+					<script type="text/javascript" charset="utf-8" >
+						var pic="https://yuyuemao.cn/{_service.pic}";	
+					</script>
+
+				<div class="tour_price">
+
+					<div class="tour_price_bg"></div>
+
+					<div class="tour_price_con">
+
+						<a style="float:left;">&nbsp;价格：<font style="font-size:20px;">{_service.price}</font>元/{_service.unit}分钟起</a><a style="float:right;line-height:36px;">&nbsp;</a>
+
+					</div>
+
+					<div class="tour_price_con2">
+
+						&nbsp;{_service.name}
+
+							<br />
+
+						&nbsp;{_service.uname} {_service.address}
+
+					</div>
+
+				</div>
+
+			</div>
+			{ENDIF}
+			{_IF pic}
+
+			<div class="tour_img">
+					<img src="{_pic}" width="100%">
+					<script  type="text/javascript" charset="utf-8" >
+						var pic="https://yuyuemao.cn/app/shell222/{_pic}";	
+					</script>
+			</div>
+			{ENDIF}
+
+			<!--基本信息-->
+			{_FOREACH list}
+			<div class="zhoubian_2">
+
+						<div class="zhoubian_2_1" ><img src="images/m.png" style="vertical-align:bottom;" alt="旅游网"/></div>
+
+						<div class="zhoubian_2_2" ><a href="#" style="color:#444545;text-decoration:none;">{_0} </a></div>
+
+						<div class="zhoubian_2_3">{_1} {_2} {_3}</div>
+
+			</div>
+			{ENDFOR}
+			
+
+			<hr>
+			 {_IF flowtimes<100}
+			<form method="post" action="index.php?act=topicFollow&id={_id}">
+			<div class="zhoubian_2">
+					<div class="zhoubian_2_1" >回帖：</div>
+
+						<div class="zhoubian_2_2 " >
+							<textarea name="content" cols=50 rows="5" style="border: 1px;border-color: blue"></textarea>
+
+						</div>
+
+						<div class="zhoubian_2_3">
+							<input type="submit" name="" value="提交" class="login_button">
+						</div>
+						
+
+			</div>
+			</form>
+			{ENDIF}
+
+			
+
+			
+
+		</div>
+
+	</div>
+
+	
+</div>
+
+
+
+
+{_INCLUDE foot.html}
+
+<table border="1px" bordercolor="#D8D8D6" style="width:100%;position:fixed;height:50px;bottom:44px;z-index:888;">
+
+	<tr><td height=30 style="position:relative;">
+
+		<div style="position:absolute;width:100%;height:100%;opacity:0.8;filter:alpha(opacity=80);background-color:#ffffff;bottom:0px;left:0px;z-index:1;"></div>
+
+		<div style="position:absolute;width:100%;;height:36px;text-align:center;bottom:0px;left:0;z-index:2;">
+
+			<div style="margin:0 auto;width:270px;height:100%;position:relative;"><a onClick="showshare();"><img src="images/share.png" height=32 ></a>&nbsp;&nbsp;&nbsp;&nbsp;<!--<a href="tel_3A021-51085101"><img src="images/400.png" height=32 ></a>&nbsp;&nbsp;&nbsp;&nbsp;--><a href="javascript:beginTalk();"><img src="images/online.png" height=32 ></a></div>
+
+		</div>
+
+	</td></tr>
+
+</table>
+
+<div id="share_div" style="display:none;position:fixed;width:100%;height:100%;background-color:rgba(0,0,0,0.5);top:0px;z-index:999;">
+
+	<table border="1px" bordercolor="#D8D8D6" style="margin:0 auto;width:230px;background-color:#ffffff;max-width:500px;margin-top:20px;" class="bdsharebuttonbox">
+
+		<tr>
+
+			<td height=32>&nbsp;&nbsp;<font color=blue style="font-size:16px;">分享</font><img src="images/close.png" height=20 align="absmiddle" style="float:right;" onClick="closeshare()"></td>
+
+		</tr>
+
+		<tr>
+
+			<td height=32><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博" style="width:200px;text-indent:40px;color:#000000;text-decoration:none;margin:2px 0 2px 10px;">分享到新浪微博</a></td>
+
+		</tr>
+
+		<tr>
+
+			<td height=32><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博" style="width:200px;text-indent:40px;color:#000000;text-decoration:none;margin:2px 0 2px 10px;">分享到腾讯微博</a></td>
+
+		</tr>
+
+		<tr>
+
+			<td height=32><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间" style="width:200px;text-indent:40px;color:#000000;text-decoration:none;margin:2px 0 2px 10px;">分享到qq空间</a></td>
+
+		</tr>
+
+		<tr>
+
+			<td height=32><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信" style="width:200px;text-indent:40px;color:#000000;text-decoration:none;margin:2px 0 2px 10px;">分享到微信</a></td>
+
+		</tr>
+
+		<tr>
+
+			<td height=32><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网" style="width:200px;text-indent:40px;color:#000000;text-decoration:none;margin:2px 0 2px 10px;">分享到豆瓣</a></td>
+
+		</tr>
+
+	</table>
+
+	
+
+</div>
+
+ <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+  /*
+   * 注意：
+   * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+   * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+   * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+   *
+   * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+   * 邮箱地址：weixin-open@qq.com
+   * 邮件主题：【微信JS-SDK反馈】具体问题
+   * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+   */
+  wx.config({
+     debug: false,
+    appId: '{_signPackage.appId}',//'<?php echo $signPackage["appId"];?>',
+    timestamp: '{_signPackage.timestamp}',//'<?php echo $signPackage["timestamp"];?>,
+    nonceStr: '{_signPackage.nonceStr}',//''<?php echo $signPackage["nonceStr"];?>',
+    signature: '{_signPackage.signature}',//''<?php echo $signPackage["signature"];?>',
+    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','onMenuShareQZone'
+      // 所有要调用的 API 都要加到这个列表中
+    ]
+  });
+  if(pic==undefined)
+  	var pic="https://yuyuemao.cn/app/images/yuyuemao.jpg";
+  wx.ready(function () {
+    // 在这里调用 API
+        wx.onMenuShareTimeline({
+        title: '【{_type}】{_title}', // 分享标题
+        link: 'https://yuyuemao.cn/app/shell222/index.php?act=topicFollow&id={_id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: pic, // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+        title: '【{_type}】{_title}', // 分享标题
+        desc: '预约猫推荐', // 分享描述
+        link: 'https://yuyuemao.cn/app/shell222/index.php?act=topicFollow&id={_id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: pic, // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+        // 用户取消分享后执行的回调函数
+        }
+        });
+
+         wx.onMenuShareQQ({
+        title: '【{_type}】{_title}', // 分享标题
+        
+        link: 'https://yuyuemao.cn/app/shell222/index.php?act=topicFollow&id={_id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: pic, // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareWeibo({
+        title: '【{_type}】 {_title}', // 分享标题
+        desc: '预约猫推荐', // 分享描述
+        link: 'https://yuyuemao.cn/app/shell222/index.php?act=topicFollow&id={_id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: pic, // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareQZone({
+         title: '【{_type}】{_title}', // 分享标题
+        desc: '预约猫推荐', // 分享描述
+        link: 'https://yuyuemao.cn/app/shell222/index.php?act=topicFollow&id={_id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: pic, // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+  });
+
+
+
+
+function beginTalk() {
+
+	var t = window.location.toString();
+
+	var newT = t.replace(new RegExp("&", "gm"), "<and>"); 
+
+	//window.open("italk/index_m.jsp@fs_AccessAddress=" + newT, "talk");
+
+}
+
+function showshare(){
+
+	document.getElementById('share_div').style.display='';
+
+}
+
+function closeshare(){
+
+	document.getElementById('share_div').style.display='none';
+
+}
+
+$('.table_title').click(function() {
+
+	if($(this).parent().parent('table').attr('class')!='on'){
+
+		$('.tour_div .on').removeClass('on');
+
+		$(this).parent().parent('table').addClass('on');
+
+		$('.table_title').each(function(i) {
+
+			$('.table_title').eq(i).parent().children('tr').each(function(j) {
+
+				if(j!=0){
+
+					$(this).hide();
+
+				}
+
+			});
+
+		});
+
+		$(this).parent().children('tr').each(function(j) {
+
+			$(this).show();
+
+		});
+
+		$("html,body").animate({scrollTop: $(this).offset().top-3}, 500);
+
+	}else{
+
+		$('.tour_div .on').removeClass('on');
+
+		$(this).parent().children('tr').each(function(j) {
+
+			if(j!=0){
+
+				$(this).hide();
+
+			}
+
+		});
+
+	}
+
+	
+
+});
+
+$('.table_title').each(function(i) {
+
+	if(i!=0){
+
+		$('.table_title').eq(i).parent().children('tr').each(function(j) {
+
+			if(j!=0){
+
+				$(this).hide(500);
+
+			}
+
+		});
+
+	}
+
+});
+
+function dateQuery(ProductNo,day,year,month){
+
+	//htmlobj=$.ajax({url:"DateQueryAction.jsp@ProductNo="+ProductNo+"&day="+day+"&year="+year+"&month="+month+"&selected=1&traveltype=0",async:false});
+
+//	$("#open_div").html(htmlobj.responseText);
+
+}
+
+function doReserve(ProductNo,fr_SeatDate,weekNum,num,id,fi_bakNo1,status,priceID){
+
+	//htmlobj=$.ajax({url:"TicketQueryAction.jsp@ProductNo="+ProductNo+"&fr_SeatDate="+fr_SeatDate+"&weekNum="+weekNum+"&status="+status+"&day="+fi_bakNo1,async:false});
+
+	//$("#open_div_bak").html($("#open_div").html());
+
+	//$("#open_div").html(htmlobj.responseText);
+
+}
+
+
+
+dateQuery('TR042774','11','2014','09');
+
+
+
+function backtolist(){
+
+	$("#open_div").html($("#open_div_bak").html());
+
+	$("#open_div_bak").html("");
+
+}
+
+function Round(a_Num,a_Bit) 
+
+{ 
+
+	return(Math.round(a_Num*Math.pow(10,a_Bit))/Math.pow(10,a_Bit)); 
+
+} 
+
+function countsub(count,num){
+
+	var p1=count*100;
+
+	var p2=num;
+
+	return Round(p1*p2/100,2);
+
+}
+
+function addToShoppingCart(str1,str2){
+
+	loginObj="cart";
+
+	var bool =true;
+
+	var sumPrice=0;
+
+	var sumCostPrice=0;
+
+	var totalnum=0;
+
+	if(document.form_opendate.num!=null){
+
+		if(document.form_opendate.num.length!=null){
+
+			for(var i=0;i<document.form_opendate.num.length;i++){
+
+				if(Number(document.form_opendate.num[i].value)>0){
+
+					sumPrice+=countsub(document.form_opendate.fd_webprice[i].value,document.form_opendate.num[i].value)-countsub(document.form_opendate.fi_MinusPrice[i].value,document.form_opendate.num[i].value);
+
+					sumCostPrice+=countsub(document.form_opendate.fd_costprice[i].value,document.form_opendate.num[i].value);
+
+					var fi_IsCount = document.form_opendate.fi_IsCount[i].value;
+
+					if (fi_IsCount == "1") {
+
+						totalnum += Number(document.form_opendate.num[i].value);
+
+					}
+
+				}
+
+			}
+
+		}
+
+		else{
+
+			if(Number(document.form_opendate.num.value)>0){
+
+				sumPrice+=countsub(document.form_opendate.fd_webprice.value,document.form_opendate.num.value)-countsub(document.form_opendate.fi_MinusPrice.value,document.form_opendate.num.value);
+
+				sumCostPrice+=countsub(document.form_opendate.fd_costprice.value,document.form_opendate.num.value);
+
+				var fi_IsCount = document.form_opendate.fi_IsCount.value;
+
+				if (fi_IsCount == "1") {
+
+					totalnum += Number(document.form_opendate.num.value);
+
+				}
+
+			}
+
+		}
+
+	}
+
+	else{
+
+		alert("该开班日期已经报名结束");
+
+		bool=false;
+
+		return;
+
+	}
+
+	if(totalnum<=0){
+
+		alert("请填写数量");
+
+		bool=false;
+
+		return;
+
+	}
+
+	if(bool){
+
+		document.form_opendate.ProductPrice.value=sumPrice;
+
+		document.form_opendate.ProductCostPrice.value=sumCostPrice;
+
+		document.form_opendate.totalnum.value=totalnum;
+
+		document.form_opendate.startDate.value=str1;
+
+		document.form_opendate.endDate.value=str2;
+
+		
+
+		document.form_opendate.GTY_Num.value=totalnum;
+
+		document.form_opendate.GTY_ProductPrice.value=countsub(document.form_opendate.GTY_WebPrice.value,document.form_opendate.GTY_Num.value);
+
+		document.form_opendate.GTY_ProductCostPrice.value=countsub(document.form_opendate.GTY_Cost.value,document.form_opendate.GTY_Num.value);
+
+		
+
+		//document.form_opendate.action="addToShoppingCart.jsp";
+
+		document.form_opendate.submit();
+
+	}
+
+}
+
+</script>
+
+</body>
+
+</html>

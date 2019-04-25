@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>商家列表</title>
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/response.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/cat16.ico" type="image/x-icon"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?83fc41ced71de2d6a049a7b2bc8ea112";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </head>
+  <body>
+    <div class="maincont"> 
+      <div class="head-top">
+      <img src="images/head.jpg" />
+     </div><!--head-top/-->
+     <header>
+      <a href="javascript:history.back(-1)" class="back-off fl"><span class="glyphicon glyphicon-menu-left"></span></a>
+      <div class="head-mid">
+      
+
+       <form action="index.php?act=prolist" method="get" class="prosearch">
+        <div >
+          
+          <div class="col-xs-8">
+            <input type="hidden" name="act" value="prolist" />
+            <input type="text" name="keyword" class="seaText "/>
+          </div>
+           <div class="col-xs-4">
+            <input type="submit" value="搜索" class="seaSub fr" />
+          </div>
+        </div>
+     </form>
+
+      </div>
+     </header>
+
+    <!-- <ul class="pro-select">
+      <li class="pro-selCur"><a href="javascript:;">新品</a></li>
+      <li><a href="javascript:;">销量</a></li>
+      <li><a href="javascript:;">价格</a></li>
+     </ul><!--pro-select/-->
+      <div class="prolist">
+     <!--服务名称 价格 开始时间 结束时间 商家-->
+     {_FOREACH prodlist}
+      <dl>
+       <dt><a href="index.php?act=shop&id={_id}"><img src="../{_pic}" width="100" height="100" /></a></dt>
+       <dd>
+        <h3><a href="index.php?act=shop&id={_id}">{_name}</a></h3>
+        
+        <div class="prolist-price">热门度：<strong>{_logintimes}</strong> </div>
+       <div class="prolist-yishou"><em>{_address}</em></div>
+       </dd>
+       <div class="clearfix"> </div>
+      </dl>
+      {ENDFOR}
+    
+      
+     </div><!--prolist/-->
+    {_INCLUDE foot.html}
+    </div><!--maincont-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <!--焦点轮换-->
+    <script src="js/jquery.excoloSlider.js"></script>
+    <script>
+		$(function () {
+		 $("#sliderA").excoloSlider();
+		});
+	</script>
+  </body>
+</html>

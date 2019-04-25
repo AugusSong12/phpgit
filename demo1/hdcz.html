@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>帖子后端操作</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="skin/css/reset.css">
+	<link rel="stylesheet" href="skin/css/screen.css">
+	<link rel="stylesheet" href="https://at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.css">
+	<script src="skin/js/jquery-2.1.1.min.js"></script>
+	<script src="skin/js/screen.js"></script>
+
+	<script type="text/javascript">
+		var pixclPatio = 1 / window.devicePixelRatio;
+		document.write('<meta name="viewport" content="width=device-width,initial-scale='+pixclPatio+',minimum-scale='+pixclPatio+',maximum-scale='+pixclPatio+',user-scalable=no" />');
+	</script>
+</head>
+<body>
+	<div class="hdcz">
+		<div class="h-header">
+			<span class="left">取消</span>
+			<span class="right">发布</span>
+		</div><!--h-header-->
+		
+		<div class="content">
+			<div class="box">
+				<div class="title">
+					标题：<input type="text" name="" id="" placeholder="请输入标题">
+				</div>
+				<div class="title">
+					<span class="out">户外</span>
+					<span class="in">室内</span>
+				</div>
+				<div class="type">
+					分类：<span class="choose">请选择分类</span>
+					<ul>
+						<li>分类一</li>
+						<li>分类二</li>
+					</ul>
+				</div>
+				
+				<div class="time">
+					<div class="left">
+						<span>日期: </span>
+						<span id="h3Ele">请选择日期</span>
+					</div>
+					<div class="right" id="sjd-box">
+						<span>时间段:</span>
+						<span class="sjd">请选择时间段</span>
+					</div>
+				</div>
+				<div class="people-gotype">
+					<div class="people left">
+						人数上限：<span class="choose">请选择人数</span>
+						<ul>
+							<li>分类一</li>
+							<li>分类二</li>
+						</ul>
+					</div>
+					<div class="gotype right">
+						出行方式：<span class="choose">出行方式</span>
+						<ul>
+							<li>分类一</li>
+							<li>分类二</li>
+							<li>分类二二二</li>
+						</ul>
+					</div>
+				</div>
+				<div class="win">
+					入围条件：<span class="choose">请选择分类</span>
+					<ul>
+						<li>分类一</li>
+						<li>分类二</li>
+					</ul>
+				</div>
+				
+				
+				<div class="substance">
+					<div class="title" style="border-bottom: none;">内容：</div>
+					<textarea class="txt">
+						
+					</textarea>
+				</div>
+				<div class="sub-img">
+					<div class="title" style="border-bottom: none;">上传图片：</div>
+					<div id="result"> 
+						<!-- 这里用来显示读取结果 --> 
+					</div>
+					<input type="file" id="file_input" style="display: none;" multiple>
+					<img src="skin/images/sub_img.png" alt="" class="sub" id="img-btn">
+				</div>
+				<div class="title">
+					地址：<input type="text" name="" id="" placeholder="请输入地址">
+				</div>
+			</div>
+			
+			
+			
+		</div><!--content-->
+		<div id='schedule-box' class="boxshaw"></div>
+		
+		
+		
+		<div class="content time-slot">
+			<div class="time-appointment">预约时间</div>
+			<span>09:00-10:00</span>
+			<span>10:00-11:00</span>
+			<span>11:00-12:00</span>
+			<span>12:00-13:00</span>
+			<span>13:00-14:00</span>
+			<span>14:00-15:00</span>
+			<span>15:00-16:00</span>
+			<span>16:00-17:00</span>
+			<div class="end"></div>
+			
+		</div>
+		
+	</div>
+	<script src="skin/js/schedule.js"></script>
+<script>
+	
+	var mySchedule = new Schedule({
+		el: '#schedule-box',
+		//date: '2018-9-20',
+		clickCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = y+'-'+m+'-'+d	
+		},
+		nextMonthCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = y+'-'+m+'-'+d	
+		},
+		nextYeayCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = y+'-'+m+'-'+d	
+		},
+		prevMonthCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = y+'-'+m+'-'+d	
+		},
+		prevYearCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = y+'-'+m+'-'+d	
+		}
+	});
+	
+	
+	
+/* 上传图片 */
+	var imgBtn = document.getElementById("img-btn");	
+    var result = document.getElementById("result");
+    var input = document.getElementById("file_input");
+    
+    if(typeof FileReader === 'undefined'){
+        result.innerHTML = "抱歉，你的浏览器不支持 FileReader";
+        input.setAttribute('disabled','disabled');
+    }else{
+        input.addEventListener('change',readFile,false);
+    }
+	 $("#img-btn").click(function() {
+		$("#file_input").click();
+	});            
+    function readFile(){
+        var file = this.files[0];
+        if(!/image\/\w+/.test(file.type)){
+            alert("请确保文件为图像类型");
+            return false;
+        }
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        
+        reader.onload = function(e){
+            result.innerHTML += '<img src="'+this.result+'" alt=""/>' 
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>{_title}-预约猫团购活动列表</title>
+    <meta name="keywords" content="团购,秒杀,拼多多">
+    <meta name="discription" content="{_content}">
+    <link rel="stylesheet" href="style/weui.css"/>
+    <link rel="stylesheet" href="example/example.css"/>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?83fc41ced71de2d6a049a7b2bc8ea112";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</head>
+<body ontouchstart>
+    <div class="weui-toptips weui-toptips_warn js_tooltips">错误提示</div>
+
+    <div class="container" id="container"></div>
+
+    <script type="text/html" id="tpl_home">
+    </script>
+{_IF act=tuanList}
+<script type="text/html" id="tpl_index">
+<div class="page">
+    <div class="page__hd">
+        <h1 class="page__title">预约猫团价宝</h1>
+        <!--p class="page__desc">面板</p-->
+    </div>
+    <div class="page__bd">
+        <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form">
+                <div class="weui-search-bar__box">
+                    <i class="weui-icon-search"></i>
+                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required/>
+                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+                </div>
+                <label class="weui-search-bar__label" id="searchText">
+                    <i class="weui-icon-search"></i>
+                    <span>搜索</span>
+                </label>
+            </form>
+            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+        </div>
+
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__hd">团价活动列表</div>
+            <div class="weui-panel__bd">
+                {_FOREACH this}
+                {_IF id}
+                <a href="index.php?m=minituan&act=gettuan&id={_id}&code=1#buyer" class="weui-media-box weui-media-box_appmsg">
+                    <div class="weui-media-box__hd">
+                        <img class="weui-media-box__thumb" src="https://yuyuemao.cn/{_pic}" alt="">
+                    </div>
+                    <div class="weui-media-box__bd">
+                        <h4 class="weui-media-box__title">{_title}</h4>
+                        <p class="weui-media-box__desc">{_content}</p>
+                    </div>
+                </a>
+                {ENDIF}
+                {ENDFOR}
+                
+            </div>
+            <div class="weui-panel__ft">
+                <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                    <div class="weui-cell__bd">查看更多</div>
+                    <span class="weui-cell__ft"></span>
+                </a>    
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        var $searchBar = $('#searchBar'),
+            $searchResult = $('#searchResult'),
+            $searchText = $('#searchText'),
+            $searchInput = $('#searchInput'),
+            $searchClear = $('#searchClear'),
+            $searchCancel = $('#searchCancel');
+
+        function hideSearchResult(){
+            $searchResult.hide();
+            $searchInput.val('');
+        }
+        function cancelSearch(){
+            hideSearchResult();
+            $searchBar.removeClass('weui-search-bar_focusing');
+            $searchText.show();
+        }
+
+        $searchText.on('click', function(){
+            $searchBar.addClass('weui-search-bar_focusing');
+            $searchInput.focus();
+        });
+        $searchInput
+            .on('blur', function () {
+                if(!this.value.length) cancelSearch();
+            })
+            .on('input', function(){
+                if(this.value.length) {
+                    $searchResult.show();
+                } else {
+                    $searchResult.hide();
+                }
+            })
+        ;
+        $searchClear.on('click', function(){
+            hideSearchResult();
+            $searchInput.focus();
+        });
+        $searchCancel.on('click', function(){
+            cancelSearch();
+            $searchInput.blur();
+        });
+    });
+</script>
+
+</script>
+{ENDIF}
+
+{_IF act=gettuan}
+    <script type="text/html" id="tpl_buyer">
+
+<div class="page">
+    <div class="page__hd">
+        <h1 class="page__title">{_title}</h1>
+        <p class="page__desc">截止日期：{_dateend}</p>
+    </div>
+    <div class="page__bd">
+        <article class="weui-article">
+            <!--h1>大标题</h1-->
+            <section>
+                <!--h2 class="title">章标题</h2-->
+                <section>
+                    <!--h3>1.1 节标题</h3-->
+                   
+                    <p>   
+                        {_FOREACH pic}
+                        <img src="https://yuyuemao.cn/{_pic}" alt="">
+                        {ENDFOR}
+                        {_IF code}
+                         <h2 class="title">长摁或扫一扫二维码，参与活动</h2>
+                        <img src="{_code}" alt="">
+                        {ENDIF}
+                    </p> 
+                    <p style="text-indent:50px;">
+                      {_content}
+                    </p>
+                </section>
+                
+            </section>
+        </article>
+    </div>
+    <div class="page__ft">
+        <a href="javascript:home()"><img src="example/images/icon_footer_link.png" /></a>
+    </div>
+</div>
+
+<script>
+  /*
+   * 注意：
+   * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+   * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+   * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+   *
+   * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+   * 邮箱地址：weixin-open@qq.com
+   * 邮件主题：【微信JS-SDK反馈】具体问题
+   * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+   */
+
+
+  wx.config({
+    debug: false,
+    appId: "{_signPackage.appId}",//'
+    timestamp: "{_signPackage.timestamp}",
+    nonceStr: "{_signPackage.nonceStr}",
+    signature: "{_signPackage.signature}",
+    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','showMenuItems'
+    ]
+  });
+  wx.ready(function () {
+    // 在这里调用 API
+        wx.onMenuShareTimeline({
+        title: "{_title}", // 分享标题
+        desc: "{_dsc}", // 分享描述
+        link: 'https://yuyuemao.cn/app/mini/index.php?act=gettuan&id={_id}&code=1#buyer', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+         imgUrl: 'https://yuyuemao.cn/{_img}', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        alert("已经分享成功");
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+       title: "{_title}", // 分享标题
+        desc: "{_dsc}", // 分享描述
+        link: 'https://yuyuemao.cn/app/mini/index.php?act=gettuan&id={_id}&code=1#buyer', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+         imgUrl: 'https://yuyuemao.cn/{_img}', // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+            alert("已经分享成功");
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function (res) {
+        // 用户取消分享后执行的回调函数
+        console.log(res);
+        }
+        });
+
+        wx.onMenuShareQQ({
+       title: "{_title}", // 分享标题
+        desc: "{_dsc}", // 分享描述
+        link: 'https://yuyuemao.cn/app/mini/index.php?act=gettuan&id={_id}&code=1#buyer', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+         imgUrl: 'https://yuyuemao.cn/{_img}', // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+            alert("已经分享成功");
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+        // 用户取消分享后执行的回调函数
+        }
+        });
+
+        wx.onMenuShareWeibo({
+       title: "{_title}", // 分享标题
+        desc: "{_dsc}", // 分享描述
+        link: 'https://yuyuemao.cn/app/mini/index.php?act=gettuan&id={_id}&code=1#buyer', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+         imgUrl: 'https://yuyuemao.cn/{_img}', // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+            alert("分享成功");
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+        // 用户取消分享后执行的回调函数
+        }
+        });
+
+        wx.onMenuShareQZone({
+        title: "{_title}", // 分享标题
+        desc: "{_dsc}", // 分享描述
+        link: 'https://yuyuemao.cn/app/mini/index.php?act=gettuan&id={_id}&code=1#buyer', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/{_img}', // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+            alert("分享成功");
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+        // 用户取消分享后执行的回调函数
+        }
+        });
+
+        wx.error(function(res){
+    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+
+    console.debug(res);
+});
+});
+
+
+
+
+    </script>
+</script>
+{ENDIF}
+
+    
+  <script src="example/zepto.min.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="example/example.js"></script>
+</body>
+</html>

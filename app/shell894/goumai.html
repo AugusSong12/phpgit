@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>提交订单</title>
+<meta content="易工场" name="keywords">
+<meta content="易工场" name="description">
+<meta http-equiv="Cache-Control" content="max-age=180">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link href="font/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="css/basestyle.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/modernizr.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+</head>
+<body>
+<div class="wx-top">
+  <div class="proinfo-menu">
+    <i class="icon iconfont">&#xe603;</i>
+    <div class="down-list">
+      <s></s>
+      <a href="xiaoxi.html"><i class="icon iconfont">&#xe622;</i><span>消息</span></a>
+      <a href="index.html"><i class="icon iconfont">&#xe62c;</i><span>首页</span></a>
+      <a href="search.html"><i class="icon iconfont">&#xe617;</i><span>搜索</span></a>
+      <a href="my_guanzhu.html"><i class="icon iconfont">&#xe61a;</i><span>我的关注</span></a>
+      <a href="my_liulanjilu.html"><i class="icon iconfont">&#xe639;</i><span>浏览记录</span></a>
+      <a href="javascript:;" class="close"><img src="images/close.png" /></a>
+    </div>
+    <script type="text/javascript">
+    $(function () {
+		$(".proinfo-menu i").on("click",function(){
+			$(".down-list").slideDown(200);
+		});
+		$(".proinfo-menu .close").on("click",function(){
+			$(".down-list").hide();
+		});
+	});
+    </script>
+  </div>
+  <div class="top-title">女士运动鞋列表页</div>
+</div>
+<div class="top-blank"></div>
+<div class="wx-containe">
+  <div class="advBanner"> 
+    <div id="module_1" class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="two swiper-slide"><img src="upload/banner1.jpg" /></div>
+        <div class="two swiper-slide"><img src="upload/banner1.jpg" /></div>
+        <div class="two swiper-slide"><img src="upload/banner1.jpg" /></div>
+        <div class="two swiper-slide"><img src="upload/banner1.jpg" /></div>
+      </div>
+    <div class="swiper-pagination"></div> 
+    </div>
+  </div>
+<script type="text/javascript">
+  var swiper = new Swiper('#module_1.swiper-container', {
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      loop: true,
+      loopAdditionalSlides: 0,
+      autoplay: 3000, //可选选项，自动滑动
+      autoplayDisableOnInteraction: false
+  });
+</script>
+  <div class="proinfo-wrap">
+    <div class="pro-parameter cl">
+      <div class="pro-pri fl"><span>￥<em class="num">159</em></span></div>
+      <div class="pro-time fl">生产周期<em class="num">11</em>天</div>
+      <div class="pro-share fr" onClick="document.getElementById('share-cover').style.display='block';"><a href="javascript:;"><i class="icon iconfont">&#xe60a;</i></a></div>
+    </div>
+    <div class="pro-description">
+      描述：<span>高档高档大气上档次的商品个战士高档大气上档次的商品高档大气上档次的商品个战士个战高档大气上档次的商品个战士士高档大气上档次的商品个战士大气上档次的商品个战士</span>
+    </div>
+    <div class="pro-description">
+     <i class="icon-ccd-3d">3D</i><span class="grey pd-l">您的个人3D数据还没有采集</span><a href="3dcaiji.html" class="org pd-l">如何采集？</a>
+    </div>
+    <div class="d-wrap">
+      <div class="tit-line"><span>我的个人3D信息</span></div>
+      <div class="d-info">
+        <i class="icon-ccd-3d">3D</i>
+        <div class="d-img"><img src="images/3d.jpg" /></div>
+        <div class="d-txt">
+          <div class="tab"><span class="fl">身高</span><span class="fr">176CM</span></div>
+          <div class="tab"><span class="fl">体重</span><span class="fr">176KG</span></div>
+          <div class="tab"><span class="fl">胸围</span><span class="fr">176CM</span></div>
+          <div class="tab"><span class="fl">腰围</span><span class="fr">176CM</span></div>
+          <div class="tab"><span class="fl">臀围</span><span class="fr">176CM</span></div>
+          <div class="tab"><span class="fl">肩宽</span><span class="fr">176CM</span></div>
+          <div class="tab"><span class="fl">臂长</span><span class="fr">176CM</span></div>
+          <div class="tab"><span class="fl">腿长</span><span class="fr">176CM</span></div>
+          <div class="adr-time">
+            <div class="tab"><span class="fl">最后采集时间</span><span class="fl">2015-10-16</span></div>
+            <div class="tab"><span class="fl">最后采集地址</span><span class="fl">宿迁宝龙广场</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="user-parametric-box">
+      <div class="user-xinxi"  onclick="javascript:window.location.href='dizhiguanli.html'">
+        <div class="tab"><span><i class="icon iconfont">&#xe62e;</i>杲振</span><span><i class="icon iconfont">&#xe624;</i>18952336522</span></div>
+        <div class="tab"><i class="icon iconfont">&#xe619;</i>江苏省宿迁市宿豫区电商产业园易工场大厦6楼厕所旁</div>
+        <div class="jt"><i class="icon iconfont">&#xe62a;</i></div>
+      </div>
+      <div class="user-xinxi">
+        <div class="fapiao">
+          <div class="tit">
+            <span class="fp-name">发票信息</span>
+            <div class="checkbox">
+              <p>开具发票</p>
+			  <input type="checkbox" id="checkbox_c1" class="chk_3" /><label for="checkbox_c1"></label>
+		    </div>
+          </div>
+          <div class="con" onclick="javascript:window.location.href='fapiaoguanli.html'">
+            <div class="tab"><span>普通发票</span></div>
+            <div class="tab"><span>个人</span></div>
+            <div class="jt fp"><i class="icon iconfont">&#xe62a;</i></div>
+          </div>
+        </div>
+      </div>
+      <div class="user-xinxi">
+        <div class="tab"><span class="fp-name">购买数量</span><input type="text" class="goumai-num" /></div>
+      </div>
+      <div class="user-xinxi">
+        <div class="tab"><span class="fp-name">订单备述</span>
+          <div class="comment-word mg-t"><textarea class="comment-ipt" placeholder="订单备述...."></textarea></div>
+        </div>
+      </div>
+      <div class="user-xinxi">
+        <div class="tab">
+          <div class="pri">商品价格：<span>￥<em class="num">1234.00</em></span></div>
+          <div class="pri">运费：<span>￥<em class="num">1234.00</em></span></div>
+          <div class="pri">税费：<span>￥<em class="num">1234.00</em></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ft-blank"></div>
+<div class="wx-footer">
+  <a href="javascript:;" class="fb-btn">去付款</a>
+</div>
+<div id="share-cover" onClick="document.getElementById('mcover').style.display='';" style=""><img src="images/tishi.png"></div>
+</body>
+</html>

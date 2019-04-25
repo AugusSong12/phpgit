@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>预约猫预约管理系统</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+
+   <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="plugins/morris/morris.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+
+ <link rel="stylesheet" href="plugins/select2/select2.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="plugins/iCheck/all.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+ <link rel="shortcut icon" href="app/images/cat16.ico" type="image/x-icon"/>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+{_INCLUDE head.html}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+     <section class="content-header">
+      <h1>
+        编辑服务
+        <small>修改好你的服务资源，便于客户预定</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="index.php?m=user&act=index"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a href="index.php?m=user&act=resList">服务管理</a></li>
+        <li class="active">服务编辑</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+     <section class="content">
+        {_IF msgnum>0}
+        <div class="callout callout-danger">
+         
+          <!--<h4>提醒!</h4>
+
+          <p>1.填写商家资料，包括商家地址，商家服务简介等，保存后上传商家门店logo或者照片 <a href="index.php?m=user&act=profile"> 前往</a><br>
+            2.填写服务 菜单-》服务管理-》发布服务 填写服务资料，服务的营业时间需要正确填写 填写好保存 然后上传服务图片，服务图片可以上传多张图片 文件名不能用中文 <a href="index.php?m=user&act=resList"> 前往</a><br>
+            3.详情-->请点击右上角小闹钟前去完善资料
+            </p>
+        </div>
+        {ENDIF}
+     
+      <div class="row">
+
+
+
+     <div class="col-md-7">
+          <!-- Horizontal Form -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">服务编辑</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" method=post  >
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" id="inputEmail3" placeholder="名称" value={_name}>
+                     <input type="hidden"  name="id"  value={_id}>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">价格</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" name="price" value="{_price}" class="form-control" id="inputPassword3" placeholder="价格"> <a href="#price">编辑闲时价</a>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">数量</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" name="num" value="{_num}"" class="form-control" id="inputPassword3" placeholder="数量">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">预定天数</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" name="validday" value="{_validday}"" class="form-control" id="validday" placeholder="365">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">最小预定单位时间</label>
+
+                  <div class="col-sm-10">
+                  <select name='unit'  class="form-control" id="inputPassword3" >
+                    <option value=60 {_IF unit=60} selected {ENDIF}>1小时</option>
+                    <option value=120 {_IF unit=120} selected {ENDIF}>2小时</option>
+                    <option value=240 {_IF unit=240} selected {ENDIF}>4小时</option>
+                    <option value=480 {_IF unit=480} selected {ENDIF}>8小时</option>
+                    <option value=1440 {_IF unit=1440} selected {ENDIF}>1天</option>
+                    <option value=30 {_IF unit=30} selected {ENDIF}>30分钟</option>
+                    <option value=15 {_IF unit=15} selected {ENDIF}>15分钟</option>
+                  </select>
+                    
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">预定间隔时间</label>
+
+                  <div class="col-sm-10">
+                   
+                    <select name='intevm'  class="form-control" id="inputPassword3" >
+                      <option value=0 {_IF intevm=0} selected {ENDIF}>0分钟</option>
+                      <option value=15 {_IF intevm=15} selected {ENDIF}>15分钟</option>
+                      <option value=30 {_IF intevm=30} selected {ENDIF}>30分钟</option>
+                      <option value=60 {_IF intevm=60} selected {ENDIF}>1小时</option>
+                      <option value=120 {_IF intevm=120} selected {ENDIF}>2小时</option>
+                     
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">营业时间1</label>
+
+                  <div class="col-sm-10">
+                    <div class="bootstrap-timepicker">
+                      <div class="form-group col-sm-5">
+                       
+
+                        <div class="input-group">
+                          <input type="text" name="begin1" id='begin1' value="{_begin1}"" class="form-control timepicker">
+
+                          <div class="input-group-addon">
+                            <i class="fa fa-clock-o"></i>
+                          </div>
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                      <div class="col-sm-2">到</div>
+                      <div class="form-group col-sm-5">
+                       
+
+                        <div class="input-group">
+                          <input type="text" name="end1" id='end1' value="{_end1}"" class="form-control timepicker">
+
+                          <div class="input-group-addon">
+                            <i class="fa fa-clock-o"></i>
+                          </div>
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                      <!-- /.form group -->
+                    </div>
+                  </div>
+
+                  
+
+                 
+                  </div>
+
+             
+                
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">营业时间2</label>
+
+                   <div class="col-sm-10">
+                    <div class="bootstrap-timepicker">
+                      <div class="form-group col-sm-5">
+                       
+
+                        <div class="input-group">
+                          <input type="text" name='begin2' id='begin2' value="{_begin2}"" class="form-control timepicker">
+
+                          <div class="input-group-addon">
+                            <i class="fa fa-clock-o"></i>
+                          </div>
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                      <div class="col-sm-2">到</div>
+                      <div class="form-group col-sm-5">
+                       
+
+                        <div class="input-group">
+                          <input type="text" name='end2' id='end2' value="{_end2}"" class="form-control timepicker">
+
+                          <div class="input-group-addon">
+                            <i class="fa fa-clock-o"></i>
+                          </div>
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                      <!-- /.form group -->
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">每周休息时间</label>
+
+                  <div class="col-sm-10">
+                    <div class="radio">
+                      <label>
+                        <input type="checkbox" name="weekend[]" id="optionsRadios2" value="1" {_IF wk1} checked {ENDIF} >
+                        周一
+                      </label>
+                      <label>
+                        <input type="checkbox" name="weekend[]" id="optionsRadios2" value="2" {_IF wk2} checked {ENDIF}>
+                        周二
+                      </label>
+                      <label>
+                        <input type="checkbox" name="weekend[]" id="optionsRadios2" value="3" {_IF wk3} checked {ENDIF}>
+                        周三
+                      </label>
+                      <label>
+                        <input type="checkbox" name="weekend[]" id="optionsRadios2" value="4" {_IF wk4} checked {ENDIF}>
+                        周四
+                      </label>
+                      <label>
+                        <input type="checkbox" name="weekend[]" id="optionsRadios2" value="5" {_IF wk5} checked {ENDIF}>
+                        周五
+                      </label>
+                      <label>
+                        <input type="checkbox" name="weekend[]" id="optionsRadios2" value="6" {_IF wk6} checked {ENDIF}>
+                        周六
+                      </label>
+                      <label>
+                        <input type="checkbox" name="weekend[]" id="optionsRadios2" value="7" {_IF wk7} checked {ENDIF}>
+                        周日
+                      </label>
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">放假时间</label>
+
+                
+                <div class="col-sm-10">
+                <div class="input-group" >
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" name='vication' value="{_vaction}"" class="form-control pull-right" id="reservation">
+                </div>
+                </div>
+                </div>
+                 <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label" placeholder="填写业务介绍，特殊说明等">服务明细</label>
+
+                  <div class="col-sm-10">
+                    <textarea name="remark" class="form-control">
+                      {_remark}
+                    </textarea>
+                 
+                  </div>
+                </div>
+
+               
+
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" name="status" value="2" {_IF status=2} checked="checked" {ENDIF}> 临时下架
+                      </label>
+                      {_IF id}
+                      <a href="app/index.php?act=serviceinfo&id={_id}" target="_blank">预览</a>
+
+                      <a href="index.php?m=user&act=resDel&id={_id}">删除</a>
+                    {ENDIF}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+            
+
+              <div class="box-footer">
+              <button type="submit" class="btn btn-primary">提交</button>
+               
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
+          <a name="price"></a>
+  {_IF id}
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">闲时价格</h3> <a href="index.php?m=user&act=resPrice&sid={_id}">增加</a>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <table class="table table-condensed">
+                <tbody><tr>
+                  <th style="width: 10px">#</th>
+                  <th>价格</th>
+                  <th>策略</th>
+                
+                </tr>
+                {_FOREACH priceList}
+                <tr>
+                  <td>{_id}</td>
+                  <td>{_price}</td>
+                  <td>
+                 <a href="index.php?m=user&act=resPrice&id={_id}"> {_remark} </a>
+                  </td>
+                 
+                </tr>
+                {ENDFOR}
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          {ENDIF}
+        </div>
+
+        {_IF id}
+         <div class="col-md-5">
+          <!-- Horizontal Form -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">图片上传</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="">
+              <div class="box-body">
+             <div class="form-group col-sm-12">
+             {_FOREACH pic1 pic}
+              <img class="img-responsive" src="{_picname}" alt="Photo">
+                        {_IF picname#_pic}<a href="index.php?m=user&act=resPicDel&id={_id}">删除</a> {ENDIF} <br>
+            {ENDFOR}
+
+             </div>
+                
+
+                 <div class="form-group">
+                  <label for="exampleInputFile" class="col-sm-2 control-label">上传图片</label>
+                   <div class="col-sm-10">
+                    <input type="file" name="f1" id="exampleInputFile">
+                    <input type="hidden" name="serviceid" value="{_id}" >
+
+                    <p class="help-block">上传服务图片</p>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+            
+
+              <div class="box-footer">
+              <button type="submit" class="btn btn-primary">提交</button>
+               
+              <font color="#F00">不上传图片在客户端无法显示</font>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
+        </div>
+        {ENDIF}
+
+        </div>
+        </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{_INCLUDE foot.html}
+
+<!-- jQuery 2.2.3 -->
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+
+<script src="plugins/input-mask/jquery.inputmask.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- date-range-picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+
+<!-- bootstrap datepicker -->
+<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+
+<!-- bootstrap time picker -->
+<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
+<!-- iCheck 1.0.1 -->
+<script src="plugins/iCheck/icheck.min.js"></script>
+<!-- FastClick -->
+<!-- FastClick -->
+<script src="plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+
+
+
+
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    /*$('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });*/
+     
+
+    //Datemask dd/mm/yyyy
+    $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+    //Datemask2 mm/dd/yyyy
+    $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+    //Money Euro
+    $("[data-mask]").inputmask();
+
+    //Date range picker
+    $('#reservation').daterangepicker();
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+        {
+          ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+          },
+          startDate: moment().subtract(29, 'days'),
+          endDate: moment()
+        },
+        function (start, end) {
+          $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        }
+    );
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    });
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue'
+    });
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass: 'iradio_minimal-red'
+    });
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass: 'iradio_flat-green'
+    });
+
+
+
+    //Timepicker
+   $(".timepicker").timepicker({
+      showMeridian: false,
+      showInputs: false
+    });
+
+
+
+
+  });
+</script>
+</body>
+</html>

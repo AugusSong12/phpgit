@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>召唤峡谷-发帖</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="skin/css/reset.css">
+	<link rel="stylesheet" href="skin/css/screen.css">
+	<link rel="stylesheet" href="https://at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.css">
+	<script src="skin/js/jquery-2.1.1.min.js"></script>
+	<script src="skin/js/screen.js"></script>
+
+	<script type="text/javascript">
+		var pixclPatio = 1 / window.devicePixelRatio;
+		document.write('<meta name="viewport" content="width=device-width,initial-scale='+pixclPatio+',minimum-scale='+pixclPatio+',maximum-scale='+pixclPatio+',user-scalable=no" />');
+	</script>
+</head>
+<body>
+	<div class="hdcz">
+		<div class="h-header">
+			<span class="left" id="cancel">取消</span>
+			<span class="right" id="submit">发布</span>
+		</div><!--h-header-->
+		<form name="form2" id="form2" method="post" action="index.php?act=topicEdit"  enctype="multipart/form-data" >
+		<div class="content">
+			<div class="box">
+				<div class="title">
+					标题：<input type="text" name="title" id="title" placeholder="请输入标题">
+				</div>
+				<div class="title">
+					<span class="out change">海豚湾</span>
+					<span class="in">身边同城</span>
+					<input type="hidden" name="out" id="out" value="1">
+				</div>
+				<div class="type">
+					分类：<span class="choose">选择</span>
+					<ul>
+						<li>聚会召唤</li>
+						<li>求职</li>
+					</ul>
+					<input type="hidden" name="type" id="type" value="聚会召唤">
+				</div>
+				
+				<div class="time">
+					<div class="left">
+						
+						<span>日期: </span>
+						<input type="date" id="datePicker1"  value="" name="dt"/>
+						<!--span id="h3Ele">请选择日期</span-->
+					</div>
+					<div class="right" id="sjd-box">
+						<span>时间:</span>
+						<input type="time" id="datePicker"  value="08:00" name="tm"/>
+						<!--span class="sjd">请选择时间段</span-->
+					</div>
+					<input type="hidden" name="startdt" value="">
+				</div>
+				<div class="people-gotype">
+					<!--div class="people left">
+						人数上限：<span class="choose">请选择人数</span>
+						<ul>
+							<li>分类一</li>
+							<li>分类二</li>
+						</ul>
+						<input type="hidden" name="num" value="">
+					</div-->
+					
+					<div class="gotype ">
+						出行方式：<span class="choose">不限</span>
+						<ul>
+							<li>不限</li>
+							<li>跟团</li>
+							<li>自驾</li>
+						</ul>
+						<input type="hidden" name="gotype" id="gotype" value="不限">
+					</div>
+				</div>
+				<div class="title" >
+					人数上限:<input type="number" name="num" id="num" placeholder="请填写人数限制">
+					</div>
+					<div class="title" >
+					费用：<input type="number" name="fee" id="fee" placeholder="0">
+					</div>
+				<!--div class="win">
+					入围条件：<span class="choose">请选择分类</span>
+					<ul>
+						<li>分类一</li>
+						<li>分类二</li>
+					</ul>
+				</div-->
+				
+				
+				<div class="substance">
+					<div class="title" style="border-bottom: none;">内容：</div>
+					<textarea class="txt" name="content" placeholder=" 请输入帖子内容详情">
+						
+					</textarea>
+				</div>
+				<div class="sub-img">
+					<div class="title" style="border-bottom: none;">上传图片：</div>
+					<div id="result"> 
+						<!-- 这里用来显示读取结果 --> 
+					</div>
+					<input type="file" id="file_input" name="f1" style="display: none;" multiple>
+					<img src="skin/images/sub_img.png" alt="" class="sub" id="img-btn">
+				</div>
+				<div class="title">
+					地址：<input type="text" name="addr" id="" placeholder="请输入地址">
+				</div>
+				<div id="locat">定位 </div>
+			</div>
+			
+			
+			
+		</div><!--content-->
+	</form>
+		<div id='schedule-box' class="boxshaw"></div>
+		
+		
+		
+		<div class="content time-slot">
+			<div class="time-appointment">预约时间</div>
+			<span>09:00-10:00</span>
+			<span>10:00-11:00</span>
+			<span>11:00-12:00</span>
+			<span>12:00-13:00</span>
+			<span>13:00-14:00</span>
+			<span>14:00-15:00</span>
+			<span>15:00-16:00</span>
+			<span>16:00-17:00</span>
+			<div class="end"></div>
+			
+		</div>
+		
+	</div>
+	<script src="skin/js/schedule.js"></script>
+<script>
+	
+	var mySchedule = new Schedule({
+		el: '#schedule-box',
+		//date: '2018-9-20',
+		clickCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = y+'-'+m+'-'+d	
+		},
+		nextMonthCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = y+'-'+m+'-'+d	
+		},
+		nextYeayCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = y+'-'+m+'-'+d	
+		},
+		prevMonthCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = y+'-'+m+'-'+d	
+		},
+		prevYearCb: function (y,m,d) {
+			document.querySelector('#h3Ele').innerHTML = y+'-'+m+'-'+d	
+		}
+	});
+	
+	
+	
+/* 上传图片 */
+	var imgBtn = document.getElementById("img-btn");	
+    var result = document.getElementById("result");
+    var input = document.getElementById("file_input");
+    
+    if(typeof FileReader === 'undefined'){
+        result.innerHTML = "抱歉，你的浏览器不支持 FileReader";
+        input.setAttribute('disabled','disabled');
+    }else{
+        input.addEventListener('change',readFile,false);
+    }
+	 $("#img-btn").click(function() {
+		$("#file_input").click();
+	});            
+    function readFile(){
+        var file = this.files[0];
+        if(!/image\/\w+/.test(file.type)){
+            alert("请确保文件为图像类型");
+            return false;
+        }
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        
+        reader.onload = function(e){
+            result.innerHTML += '<img src="'+this.result+'" alt=""/>' 
+        }
+    }
+
+    $("#cancel").click(function(event) {
+    	history.back()
+    	/* Act on the event */
+    });
+
+	$("#submit").click(function(event) {
+		if($("#title").val().length>0 && $(".txt").text().length>10)
+    	$("#form2").submit();
+    	else
+    		alert("请输入标题和内容");
+    	/* Act on the event */
+    });
+
+    var type=[{_FOREACH topictype}[{_id},'{_name}',{_out}],{ENDFOR}];
+
+    $(".out").click(function(event) {
+    	$("#out").val(1);
+    	var tmp="";
+    	for(var li=0;li<type.length;li++)
+    	{
+    		if(type[li][2]==1)
+    			tmp+="<li data="+type[li][0]+">"+type[li][1]+"</li>";
+    	}
+    	$(".type ul").html(tmp);
+    	/* Act on the event */
+    });
+
+    $(".out").click();
+
+     $(".in").click(function(event) {
+    	$("#out").val(0);
+    	var tmp="";
+    	for(var li=0;li<type.length;li++)
+    	{
+    		if(type[li][2]!=1)
+    			tmp+="<li data="+type[li][0]+">"+type[li][1]+"</li>";
+    	}
+    	$(".type ul").html(tmp);
+    	/* Act on the event */
+    });
+
+     $(".gotype ul li").click(function(event) {
+     	/* Act on the event */
+     	$("#gotype").val($(this).text());
+     });
+
+
+     $(".type ul").on("click","li",function(event) {
+     	/* Act on the event */
+     	$("#type").val($(this).attr("data"));
+     	$(".type .choose").html($(this).html());
+     });
+
+</script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+  /*
+   * 注意：
+   * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+   * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+   * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+   *
+   * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+   * 邮箱地址：weixin-open@qq.com
+   * 邮件主题：【微信JS-SDK反馈】具体问题
+   * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+   */
+  wx.config({
+     debug: false,
+    appId: '{_signPackage.appId}',//'<?php echo $signPackage["appId"];?>',
+    timestamp: '{_signPackage.timestamp}',//'<?php echo $signPackage["timestamp"];?>,
+    nonceStr: '{_signPackage.nonceStr}',//''<?php echo $signPackage["nonceStr"];?>',
+    signature: '{_signPackage.signature}',//''<?php echo $signPackage["signature"];?>',
+    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','onMenuShareQZone','openLocation',//使用微信内置地图查看地理位置接口
+                  'getLocation' //获取地理位置接口
+      // 所有要调用的 API 都要加到这个列表中
+    ]
+  });
+  if(pic==undefined)
+  	var pic="https://yuyuemao.cn/app/images/yuyuemao.jpg";
+  wx.ready(function () {
+   	$("#locat").click(function(event) {wx.openLocation({
+				latitude: 0, // 纬度，浮点数，范围为90 ~ -90
+				longitude: 0, // 经度，浮点数，范围为180 ~ -180。
+				name: '海创基地', // 位置名
+				address: '杭州市滨江区六合路368号', // 地址详情说明
+				scale: 14, // 地图缩放级别,整形值,范围从1~28。默认为最大
+				infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+				});
+
+   		/*wx.getLocation({
+			type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+			success: function (res) {
+			var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+			var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+			var speed = res.speed; // 速度，以米/每秒计
+			var accuracy = res.accuracy; // 位置精度
+				
+			}
+		});*/
+   
+
+   
+	});
+  });
+</script>
+</body>
+</html>

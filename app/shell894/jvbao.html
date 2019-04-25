@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>举报</title>
+<meta content="易工场" name="keywords">
+<meta content="易工场" name="description">
+<meta http-equiv="Cache-Control" content="max-age=180">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link href="font/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="css/basestyle.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+	  $("[name='reprotcheck']").prop("checked",false);
+	  $(".reportList").click(function(){
+		 var $checkbox= $(this).find("input[type='checkbox']");
+		  $("[name='reprotcheck']").prop("checked",false);
+		  $checkbox.prop("checked",true);
+		  });
+	  });
+</script>
+</head>
+<body>
+<div class="wx-top">
+  <div class="top-title">举报</div>
+</div>
+<div class="top-blank"></div>
+<div class="wx-containe">
+  <div class="reportbox">
+    <div class="reporttit">请选择举报原因</div>
+    <div class="reportList tab">
+      <span class="fl">欺诈</span>
+	  <div class="fr"><input type="checkbox" name="reprotcheck" id="checkbox_a1" class="chk_1 rep" ><label for="checkbox_a1"></label></div>
+    </div>
+    <div class="reportList tab">
+      <span class="fl">色情</span>
+	  <div class="fr"><input type="checkbox" name="reprotcheck" id="checkbox_a2" class="chk_1 rep" checked=""><label for="checkbox_a2"></label></div>
+    </div>
+    <div class="reportList tab">
+      <span class="fl">政治谣言</span>
+	  <div class="fr"><input type="checkbox" name="reprotcheck" id="checkbox_a3" class="chk_1 rep" checked=""><label for="checkbox_a3"></label></div>
+    </div>
+    <div class="reportList tab">
+      <span class="fl">常识性谣言</span>
+	  <div class="fr"><input type="checkbox" name="reprotcheck" id="checkbox_a4" class="chk_1 rep" checked=""><label for="checkbox_a4"></label></div>
+    </div>
+    <div class="reportList tab">
+      <span class="fl">诱导分享</span>
+	  <div class="fr"><input type="checkbox" name="reprotcheck" id="checkbox_a5" class="chk_1 rep" checked=""><label for="checkbox_a5"></label></div>
+    </div>
+    <div class="reportList tab">
+      <span class="fl">恶意营销</span>
+	  <div class="fr"><input type="checkbox" name="reprotcheck" id="checkbox_a6" class="chk_1 rep" checked=""><label for="checkbox_a6"></label></div>
+    </div>
+    <div class="reportList tab">
+      <span class="fl">隐私信息收集</span>
+	  <div class="fr"><input type="checkbox" name="reprotcheck" id="checkbox_a7" class="chk_1 rep" checked=""><label for="checkbox_a7"></label></div>
+    </div>
+    <div class="reportList tab">
+      <span class="fl">抄袭他人</span>
+	  <div class="fr"><input type="checkbox" name="reprotcheck" id="checkbox_a8" class="chk_1 rep" checked=""><label for="checkbox_a8"></label></div>
+    </div>
+    <div class="reportList tab">
+      <span class="fl">其他侵权类（冒名、诽谤、抄袭）</span>
+	  <div class="fr"><input type="checkbox" name="reprotcheck" id="checkbox_a9" class="chk_1 rep" checked=""><label for="checkbox_a9"></label></div>
+    </div>
+    <div class="reportList tab">
+      <span class="fl">违规申明原则</span>
+	  <div class="fr"><input type="checkbox" name="reprotcheck" id="checkbox_a10" class="chk_1 rep" checked=""><label for="checkbox_a10"></label></div>
+    </div>
+  </div>
+</div>
+
+<div class="ft-blank"></div>
+<div class="wx-footer">
+  <a href="javascript:;" class="fb-btn">下一步</a>
+</div>
+</body>
+</html>

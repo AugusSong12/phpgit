@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>发布需求</title>
+<meta content="易工场" name="keywords">
+<meta content="易工场" name="description">
+<meta http-equiv="Cache-Control" content="max-age=180">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link href="font/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="css/basestyle.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/mobil_time.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/modernizr.js"></script>
+<script type="text/javascript" src="js/mobiltime.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript">
+$(function () {
+	var li_ht = $(".uploadpro>li>.img").width();
+	$(".uploadpro>li>.img").css("height",li_ht);
+});
+</script>
+</head>
+<body>
+<div class="wx-top">
+  <div class="proinfo-menu">
+    <i class="icon iconfont">&#xe603;</i>
+    <div class="down-list">
+      <s></s>
+      <a href="xiaoxi.html"><i class="icon iconfont">&#xe622;</i><span>消息</span></a>
+      <a href="index.html"><i class="icon iconfont">&#xe62c;</i><span>首页</span></a>
+      <a href="search.html"><i class="icon iconfont">&#xe617;</i><span>搜索</span></a>
+      <a href="my_guanzhu.html"><i class="icon iconfont">&#xe61a;</i><span>我的关注</span></a>
+      <a href="my_liulanjilu.html"><i class="icon iconfont">&#xe639;</i><span>浏览记录</span></a>
+      <a href="javascript:;" class="close"><img src="images/close.png" /></a>
+    </div>
+    <script type="text/javascript">
+    $(function () {
+		$(".proinfo-menu i").on("click",function(){
+			$(".down-list").slideDown(200);
+		});
+		$(".proinfo-menu .close").on("click",function(){
+			$(".down-list").hide();
+		});
+	});
+    </script>
+  </div>
+  <div class="top-title">发布需求</div>
+</div>
+<div class="top-blank"></div>
+<div class="wx-containe">
+  <div class="ment-items">
+    <div class="uploaddes"><textarea class="textareat-pro-des" placeholder="您的定制需求描述"></textarea><span><em class="num">0</em>/<em class="num">100</em></span></div>
+  </div>
+  <div class="ment-items">
+    <div class="uploadpro-sz">
+      <div class="con">
+        <div class="tab">
+          <div class="fr font1_6">之前完成</div>
+          <div class="fl font1_6">期望在</div>
+          <div class="fb-sec-time font1_6 red"><input value="2015-05-01 15:42:02" class="" readonly name="appDateTime" id="appDateTime" type="text"></div>
+<script type="text/javascript">
+        $(function () {
+			   var opt = {
+        preset: 'date', //日期
+        theme: 'jqm', //皮肤样式
+        display: 'modal', //显示方式
+        mode: 'scroller', //日期选择模式
+        dateFormat: 'yy-mm-dd', // 日期格式
+        setText: '确定', //确认按钮名称
+        cancelText: '取消',//取消按钮名籍我
+        dateOrder: 'yymmdd', //面板中日期排列格式
+minDate:new Date(),
+        dayText: '日', monthText: '月', yearText: '年', //面板中年月日文字
+startYear:2016,
+        endYear:2020 //结束年份
+    };
+
+$("#appDateTime").mobiscroll(opt);
+
+        });
+</script>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ment-items">
+    <div class="uploadpro-sz">
+      <div class="con">
+        <div class="tit">参考素材</div>
+        <ul class="uploadpro">
+          <li><div class="img"><img src="upload/proimg.jpg" /></div></li>
+          <li><div class="img"><img src="upload/proimg.jpg" /></div></li>
+          <li><div class="img"><img src="images/jia.jpg" /></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ft-blank"></div>
+<div class="wx-footer">
+  <a href="javascript:;" class="fb-btn">去付款</a>
+</div>
+</body>
+</html>

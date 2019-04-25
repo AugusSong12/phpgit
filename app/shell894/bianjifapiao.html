@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>编辑和添加发票</title>
+<meta content="易工场" name="keywords">
+<meta content="易工场" name="description">
+<meta http-equiv="Cache-Control" content="max-age=180">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link href="font/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="css/basestyle.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+</head>
+<body>
+<div class="wx-top">
+  <div class="top-title">发票管理</div>
+</div>
+<div class="top-blank"></div>
+<div class="wx-containe">
+  <div class="orderListBox" id="fptab">
+    <div class="order-tab">
+      <div class="odr-tit"><span class="name">选择发票类型</span></div>
+      <div class="odr-con noborder tab-tit">
+        <a class="fp-lx-sec active" onclick="tabs('#fptab',0)">普通发票</a>
+        <a class="fp-lx-sec" onclick="tabs('#fptab',1)">增值税发票</a>
+      </div>
+    </div>
+    <div class="order-tab tab-con" style="display:block;">
+      <div class="odr-tit"><span class="name">发票抬头</span></div>
+      <div class="odr-con noborder">
+        <div class="fp-head-sec selected"><input type="radio" name="gongsicheck" id="checkbox_a1" class="chk_1 fl" checked /><label for="checkbox_a1"></label><span>个人</span></div>
+        <div class="fp-head-sec">
+          <input  name="gongsicheck" type="radio" id="checkbox_a2" class="chk_1 fl" /><label for="checkbox_a2"></label><span>公司</span>
+          <div class="clearfix"></div>
+          <input type="text" class="fp-ipt-txt" placeholder="请输入公司名称"  value="">
+<script type="text/javascript">
+ 
+	 $(function(){
+		 xxx($("#checkbox_a1"),false);
+		 xxx($("#checkbox_a2"),true);
+		 function xxx(item,bl){ 
+		$(item).change(function(){
+			var flag=$(item).prop("checked");
+			var _item=$(".fp-ipt-txt");
+			if(flag){
+			if(bl)
+			_item.show();
+			else
+			_item.hide();
+			}
+			else
+			{
+				if(!bl)
+			_item.show();
+			else
+			_item.hide();
+			}
+		});
+		};
+	 });
+</script>
+        </div>
+      </div>
+    </div>
+    <div class="order-tab tab-con" style="display:none;">
+      <div class="odr-con">
+        <div class="fp-list">
+          <p class="zzs-tit">增票资质</p>
+          <input type="text" class="fp-ipt-txt zzs" placeholder="请输入营业执照上的公司全称"  value="">
+        </div>
+        <div class="fp-list">
+          <p class="zzs-tit">纳税人编号</p>
+          <input type="text" class="fp-ipt-txt zzs" placeholder="请输入税务登记证上的编号"  value="">
+        </div>
+        <div class="fp-list">
+          <p class="zzs-tit">注册地址</p>
+          <input type="text" class="fp-ipt-txt zzs" placeholder="请输入营业执照上的完整地址"  value="">
+        </div>
+        <div class="fp-list">
+          <p class="zzs-tit">注册电话</p>
+          <input type="text" class="fp-ipt-txt zzs" placeholder="请输入注册营业执照时留有的办公电话"  value="">
+        </div>
+        <div class="fp-list">
+          <p class="zzs-tit">公司开户银行全称</p>
+          <input type="text" class="fp-ipt-txt zzs" placeholder="请输入开户许可证上的银行全称"  value="">
+        </div>
+        <div class="fp-list">
+          <p class="zzs-tit">公司银行账号</p>
+          <input type="text" class="fp-ipt-txt zzs" placeholder="请输入开户许可证上的银行账号"  value="">
+        </div>
+      </div>
+      <div class="odr-num">
+        <div class="fl shuliang adr-mr-opt"><a href="#" class=""><i class="icon iconfont">&#xe61e;</i>设为默认发票</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ft-blank"></div>
+<div class="wx-footer"> <a href="bianjifapiao.html" class="fb-btn wh_50">取消</a> <a href="bianjifapiao.html" class="fb-btn wh_50 sure">确定</a></div>
+</body>
+</html>

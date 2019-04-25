@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>预约猫</title>
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/response.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+  //调用微信JS api 支付
+  function jsApiCall()
+  {
+    WeixinJSBridge.invoke(
+      'getBrandWCPayRequest',
+      {_jsApiParameters},
+      function(res){
+        WeixinJSBridge.log(res);
+        if(res.err_msg!='get_brand_wcpay_request:ok')
+          alert('您已取消付款，可以到用户中心继续支付');//res.err_code+res.err_desc+"::"+res.err_msg
+        else
+          location.reload();
+      }
+    );
+  }
+
+  function callpay()
+  {
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+            document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+        }
+    }else{
+        jsApiCall();
+    }
+  }
+  </script>
+  <script type="text/javascript">
+  //获取共享地址
+/*  function editAddress()
+  {
+    WeixinJSBridge.invoke(
+      'editAddress',
+      <?php echo $editAddress; ?>,
+      function(res){
+        var value1 = res.proviceFirstStageName;
+        var value2 = res.addressCitySecondStageName;
+        var value3 = res.addressCountiesThirdStageName;
+        var value4 = res.addressDetailInfo;
+        var tel = res.telNumber;
+        
+        alert(value1 + value2 + value3 + value4 + ":" + tel);
+      }
+    );
+  }
+  
+/*  window.onload = function(){
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', editAddress, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', editAddress); 
+            document.attachEvent('onWeixinJSBridgeReady', editAddress);
+        }
+    }else{
+      editAddress();
+    }
+  };*/
+  
+  </script>
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?83fc41ced71de2d6a049a7b2bc8ea112";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </head>
+  <body>
+    <div class="maincont">
+     <header>
+      <a href="javascript:history.back(-1)" class="back-off fl"><span class="glyphicon glyphicon-menu-left"></span></a>
+      <div class="head-mid">
+       <h1>支付</h1>
+      </div>
+     </header>
+     <div class="susstext">{_IF status=1} 订单提交成功 {ELSE} 订单支付成功 {ENDIF} </div>
+     <div class="sussimg">&nbsp;</div>
+     <div class="dingdanlist">
+      <table>
+       <tr>
+        <td width="50%">
+         <h3>订单编号：{_id}</h3>
+         <time>创建日期：{_dt}<br/></time>
+         <strong class="orange">¥{_totle}</strong>
+        </td>
+        <td align="right"><span class="orange">{_IF status=1} 等待支付 {ELSE} 支付完成 {ENDIF}</span></td>
+       </tr>
+      </table>
+     </div><!--dingdanlist/-->
+     <div class="succTi orange">{_IF status=1} 请您尽快完成付款，否则订单将被取消 {ELSE} 订单支付成功，请看看其他商品吧 {ENDIF} </div>
+   <!--  <form action="../Wxpaygzh/example/jsapi.php" method="get" accept-charset="utf-8" id="f1">
+        <input type="hidden" name="trade_no" value="{_id}">
+        <input type="hidden" name="subject" value="{_title}">
+        <input type="hidden" name="total_amount" value="{_totle}">
+        <input type="hidden" name="body" value="{_body}">
+     </form>-->
+    </div><!--content/-->
+    
+    <div class="height1"></div>
+    <div class="gwcpiao">
+     <table>
+      <tr>
+       <td width="50%"><a href="index.php?act=index" class="jiesuan" style="background:#5ea626;">继续购物</a></td>
+       <td width="50%">
+{_IF status=1}
+       <a href="#" class="jiesuan">立即支付</a>
+       {ENDIF}
+        <div align="center">
+   <!-- <button style="width:210px; height:50px; border-radius: 15px;background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;" type="button" onclick="callpay()" >立即支付</button>-->
+  </div>
+
+       </td>
+      </tr>
+     </table>
+    </div><!--gwcpiao/-->
+    </div><!--maincont-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <!--jq加减-->
+    <script src="js/jquery.spinner.js"></script>
+   <script>
+    $(document).ready(function(){
+ 
+   // 开始写 jQuery 代码...
+
+   $(".jiesuan").click(function(){
+    callpay();
+    //if("{_paytype}"=="w")
+     // $("#f1").attr('action', '../Wxpaygzh/example/jsapi.php');
+    //else 
+    //  $("form").attr('action', '../lib/alipay/wappay/pay.php');
+      
+
+  //  $("#f1").submit();
+   // alert("段落被点击了。");
+});
+ 
+});
+	$('.spinnerExample').spinner({});
+	</script>
+  </body>
+</html>

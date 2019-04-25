@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <title>商家列表</title>
+    <link rel="shortcut icon" href="images/favicon.ico" />
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="skin/css/reset.css">
+	<link rel="stylesheet" href="skin/css/screen.css">
+	<link rel="stylesheet" href="skin/css/swiper.min.css">
+	
+	
+
+	
+	<!--script src="skin/js/touchScroll.js"></script-->
+
+	<script type="text/javascript">
+	var pixclPatio = 1 / window.devicePixelRatio;
+	document.write('<meta name="viewport" content="width=device-width,initial-scale='+pixclPatio+',minimum-scale='+pixclPatio+',maximum-scale='+pixclPatio+',user-scalable=no" />');
+	</script>
+	
+</head>
+<body class="sjlist">
+	<div class="header index">
+		<div class="hearder-left left">
+			<div class="address">
+				<span class="name"><a href="index.php?act=city"><font color="#f60"><b>{_city}</b></font></a></span>
+				<i></i>
+				<span class="weather-icon"></span>
+			</div>
+			<div class="date"></div>
+		</div>
+		 <form action="index.php?act=prolist" method="get" class="prosearch">
+		<div class="header-right right">
+			 <input type="hidden" name="act" value="prolist" />
+          
+			<input type="search" name="keyword"  class="search01" placeholder="搜索">
+		</div>
+	</form>
+	</div><!--header-->
+	
+	<div class="content">
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"><a href="index.php?act=topicList&id=2"><img src="adimage/zhaopin.png" alt="招聘"></a></div>
+					<div class="swiper-slide"><a href="index.php?act=topicList&id=1"><img src="adimage/sales.png" alt="促销"></a></div>
+					<div class="swiper-slide"><a href="index.php?act=topicList&id=0"><img src="adimage/juhui.png" alt="聚会"></a></div>
+			</div>	
+		</div><!--swiper-container-->
+		
+	
+		<ul class="choose">
+			<li class="choose01">
+				<span>种类</span>
+				<ul>
+					{_FOREACH typelist}
+					<li><a href="index.php?act=prolist&tid={_id}">{_name}</a></li>
+					{ENDFOR}
+					
+				</ul>
+			</li>
+			<!--li class="choose01">
+				<span>距离</span>
+					<ul>
+						<li>种类一</li>
+						<li>种类二</li>
+						<li>种类三</li>
+					</ul>
+				</li-->
+			<li class="activity">活动</li>
+			<li class="rest"><a href="index.php?act=index&xian=1"> 闲时价</a></li>
+		</ul>
+			 
+	
+		<div class="sjlb">
+			{_FOREACH prodlist}
+			<div class="sjlists">
+					<div class="list">
+						<a href="index.php?act=shop&id={_id}"><img src="../{_pic}"  class="sjimg" /></a>
+							
+							<div class="detail">
+									<h3><a href="index.php?act=shop&id={_id}">{_name}</a></h3>
+				
+									<div class="addre">{_address}</div>
+									<span class="distance">热门度：{_logintimes}</span>
+									
+							</div>	
+					</div>
+					{_IF title}<a href="index.php?act=topicFollow&id={_tid}">
+					<div class="recharge">
+						<span class="discount">优惠</span>
+						<span class="send">{_title}</span>
+						<span class="more">详情>></span>
+					</div></a>
+					{ENDIF}
+			</div>
+			
+			{ENDFOR}
+
+			
+		</div><!--sjlb-->
+	</div><!--content-->
+	<script src="skin/js/jquery-2.1.1.min.js"></script>
+	<script src="skin/js/swiper.min.js"></script>
+	
+	<div class="footer">
+		
+			<dl><a href="index.php?act=index">
+				<dt><img src="skin/images/icon01.png" alt="" class="icon01"></dt>
+				<dd>首页</dd></a>
+			</dl>
+			<dl>
+				<dt><img src="skin/images/icon06.png" alt="" class="icon02"></dt>
+				<dd class="active">商家列表</dd>
+			</dl>
+			<dl><a href="index.php?act=topicList&id=0">
+				<dt><img src="skin/images/icon03.png" alt="" class="icon03"></dt>
+				<dd>召唤峡谷</dd></a>
+			</dl>
+			<dl><a href="order.html">
+				<dt><img src="skin/images/icon04.png" alt="" class="icon04"></dt>
+				<dd>我的</dd></a>
+			</dl>
+	</div>
+	<script src="skin/js/jquery-2.1.1.min.js"></script>
+	<script src="skin/js/swiper.min.js"></script>
+	<script src="skin/js/screen.js"></script>
+</body>
+</html>

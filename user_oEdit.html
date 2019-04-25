@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>预约猫预约管理系统</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+ <link rel="shortcut icon" href="app/images/cat16.ico" type="image/x-icon"/>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+{_INCLUDE head.html}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        订单明细
+        <small>#{_id}</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="index.php?m=user&act=index"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a href="#">订单管理</a></li>
+        <li class="active">订单明细</li>
+      </ol>
+    </section>
+<!--
+    <div class="pad margin no-print">
+      <div class="callout callout-info" style="margin-bottom: 0!important;">
+        <h4><i class="fa fa-info"></i> Note:</h4>
+        This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
+      </div>
+    </div>
+-->
+    <!-- Main content -->
+    <section class="invoice">
+      <!-- title row -->
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="page-header">
+            <i class="fa fa-globe"></i> {_name}, {_mobile}.
+            <small class="pull-right">Date: {_dt}</small>
+          </h2>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- info row -->
+      <div class="row invoice-info">
+        <div class="col-sm-4 invoice-col">
+          用户信息
+          <address>
+            <strong>{_name}, {_mobile}.</strong><br>
+            {_remark}
+            
+          </address>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+          预订信息
+          <address>
+            <strong>{_dt}</strong><br>
+           <b>Order ID:</b> {_id}<br>
+          </address>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+          <b>财务信息 #{_id}</b><br>
+          <b>支付方式:</b> {_paytype}<br>
+          <b>订单状态:</b> 
+          {_IF status=1} <font color="#F00"> 未付款 </font> {ENDIF} 
+          {_IF status=2} <font color="#0F0"> 已付款 </font> {ENDIF} 
+          
+                   
+                    {_IF status=0}  已取消 {ENDIF}
+                    {_IF status=4}  已消费  {ENDIF}
+                    {_IF status=5}  已退款  {ENDIF}
+
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <!-- Table row -->
+      <div class="row">
+        <div class="col-xs-12 table-responsive">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>编号</th>
+              <th>产品</th>
+              <th>价格 #</th>
+              <th>时间</th>
+              <th>数量</th>
+            </tr>
+            </thead>
+            <tbody>
+              {_FOREACH orderdetail}
+            <tr>
+              <td>{_id}</td>
+              <td>{_sname}</td>
+              <td>¥{_price}</td>
+              <td>{_begintime} - {_endtime}</td>
+              <td>{_num}</td>
+            </tr>
+            {ENDFOR}
+           
+            </tbody>
+          </table>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+        <!-- accepted payments column -->
+       <div class="col-xs-6">
+        {_IF status=2}<a href="index.php?m=user&act=oEdit&id={_id}&s=4">进场消费 </a> | {ENDIF}
+
+        <a href="index.php?m=user&act=resOrder&id={_orderdetail.0.serviceid}">预约</a>
+          <!--<p class="lead">Payment Methods:</p>
+          <img src="dist/img/credit/visa.png" alt="Visa">
+          <img src="dist/img/credit/mastercard.png" alt="Mastercard">
+          <img src="dist/img/credit/american-express.png" alt="American Express">
+          <img src="dist/img/credit/paypal2.png" alt="Paypal">
+
+          <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg
+            dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+          </p>-->
+        </div>
+       
+        <!-- /.col -->
+       <!-- <div class="col-xs-6">
+          <p class="lead">Amount Due 2/22/2014</p>
+
+          <div class="table-responsive">
+            <table class="table">
+              <tr>
+                <th style="width:50%">Subtotal:</th>
+                <td>$250.30</td>
+              </tr>
+              <tr>
+                <th>Tax (9.3%)</th>
+                <td>$10.34</td>
+              </tr>
+              <tr>
+                <th>Shipping:</th>
+                <td>$5.80</td>
+              </tr>
+              <tr>
+                <th>Total:</th>
+                <td>$265.24</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!-- /.col -->
+
+      </div>
+      <!-- /.row -->
+
+      <!-- this row will not appear when printing -->
+     <!-- <div class="row no-print">
+        <div class="col-xs-12">
+          <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment
+          </button>
+          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+            <i class="fa fa-download"></i> Generate PDF
+          </button>
+        </div>
+      </div>-->
+    </section>
+    <!-- /.content -->
+    <div class="clearfix"></div>
+  </div>
+  {_INCLUDE foot.html}
+
+<!-- jQuery 2.2.3 -->
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+</body>
+</html>

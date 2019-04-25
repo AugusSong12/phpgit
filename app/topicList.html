@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>召唤峡谷-列表</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="skin/css/reset.css">
+	<link rel="stylesheet" href="skin/css/screen.css">
+	<link rel="stylesheet" href="skin/css/swiper.min.css">
+	<script src="skin/js/jquery-2.1.1.min.js"></script>
+	
+	<script src="skin/js/swiper.min.js"></script>
+	<script src="skin/js/screen.js"></script>
+
+	<script type="text/javascript">
+		var pixclPatio = 1 / window.devicePixelRatio;
+		document.write('<meta name="viewport" content="width=device-width,initial-scale='+pixclPatio+',minimum-scale='+pixclPatio+',maximum-scale='+pixclPatio+',user-scalable=no" />');
+
+		function showtop10(x){
+
+	location="index.php?act=topicList&id=" + x;
+	/*var el = document.getElementById("top10").getElementsByTagName("li");
+
+	for(i=0;i<el.length;i++){
+
+		el[i].className = "noselected";
+
+		document.getElementById("topten"+i).style.display="none";
+
+	}
+
+	el[x].className="yesselected";
+
+	document.getElementById("topten"+x).style.display="block";
+*/
+}
+	</script>
+	
+</head>
+<body>
+	
+	<div class="z-header">
+		
+		<span class="back left"><a href="index.php?act=index"> 返回首页</a>  <a id="title" href="index.php?act=city">{_city}</a></span>
+	
+	</div>
+<div class="container" style="height: 1202px;
+    overflow: scroll;"">
+	<div class="zhxg content" style="padding-top: 0;">
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"><a href="index.php?act=topicList&id=2"><img src="adimage/zhaopin.png" alt="招聘"></a></div>
+					<div class="swiper-slide"><a href="index.php?act=topicList&id=1"><img src="adimage/sales.png" alt="促销"></a></div>
+					<div class="swiper-slide"><a href="index.php?act=topicList&id=0"><img src="adimage/juhui.png" alt="聚会"></a></div>
+			</div>	
+		</div><!--swiper-container-->
+		<div class="wrapper wrapper01" id="retr">
+				<div class="scroller" id="nav">
+					<ul class="clearfix">
+						 {_FOREACH topictype type}
+			     <li {_IF id=_type} class="cur" {ENDIF}> <a href="index.php?act=topicList&typeid={_id}&out={_out}">{_name}</a></li>
+			      {ENDFOR}
+					
+					</ul>
+				</div>
+		</div>
+		<!--div class="rate">
+			<img src="images/yuyuemao.jpg" alt="" class="img11">
+			<span class="member"></span>
+			<span class="txt">等级 3</span>
+		</div-->
+		
+		<!--div class="choose">
+			<ul class="chooses">
+				<li class="first">
+					<a id="title" href="index.php?act=city">{_city}</a>
+				</li>
+				<li class="first">
+					<span>距离</span>
+					<ul>
+						<li>0-5km</li>
+						<li>5-10km</li>
+						<li>10-30km</li>
+						<li>30-50km</li>
+					</ul>
+				</li>
+				<li class="first">
+					<span>{_type}</span>
+					<ul>
+
+						{_FOREACH topictype}
+						<li class="{_IF type=聚会召唤} yesselected {ELSE} noselected {ENDIF}" onClick="showtop10('0')"><span>{_name}</span></li>
+						{ENDFOR}
+
+					<li class="{_IF type=商家促销} yesselected {ELSE} noselected {ENDIF}" onClick="showtop10('1')"><span>商家促销</span></li>
+
+					<li class="{_IF type=招聘} yesselected {ELSE} noselected {ENDIF}" onClick="showtop10('2')"><span>招聘</span></li>
+
+					<li class="{_IF type=求职} yesselected {ELSE} noselected {ENDIF}" onClick="showtop10('3')"><span style="border-right:1px solid #DFE0DF;">求职</span></li>
+
+					</ul>
+				</li>
+			</ul>
+		</div--><!--choose-->
+		<div class="box">
+			{_FOREACH data}
+
+					
+
+				
+			<div class="box01">
+				<a href="index.php?act=topicFollow&id={_id}" ">
+					{_IF pic}
+						<img src="{_pic}" alt="" class="img12">
+					
+						{ELSE}
+					<img src="skin/images/img12.png" alt="" class="img12">
+					{ENDIF}
+				<div class="right">
+					<h3>{_title} </h3>
+					<div class="time">【{_enddt}】</div>
+					<span class="price">{_IF fee} ￥{_fee} {ENDIF}</span>
+					<div class="gotype">
+						<span class="go">出行方式</span>{_gotype}
+					</div>
+					<i class="open"></i>
+				</div>
+			</a>
+			</div>
+			{ENDFOR}
+			
+		</div><!--box-->
+	</div>
+</div>
+	<div class="zhxg-bottom">
+		<a href="index.php?act=topicList&out=1">
+		<dl class="list01">
+			<dt><img src="skin/images/icon24.png" alt="" class="icon24"></dt>
+			<dd>海豚湾</dd>
+		</dl>
+		</a>
+		<a href="index.php?act=topicEdit">
+		<dl  class="list02">
+			<dt><img src="skin/images/icon25.png" alt="" class="icon25"></dt>
+			<dd>一键开贴</dd>
+		</dl>
+		</a>
+		<a href="index.php?act=topicList&out=0">
+		<dl class="list03">
+			<dt><img src="skin/images/icon26.png" alt="" class="icon26"></dt>
+			<dd>身边同城</dd>
+		</dl>
+		</a>
+	</div>
+	<script type="text/javascript" src="skin/js/iscroll.js"></script>
+	<script type="text/javascript" src="skin/js/navbarscroll.js"></script>
+
+<script>
+	window.onload=function()
+	{
+		$('.wrapper').navbarscroll();
+		/* var oWrap=document.getElementById("wrap");
+		var oNav=document.getElementById("nav");
+		oNav.style.width=oNav.scrollWidth+"px";
+		var oScroll=new MScroll(oWrap,"x");
+		$("#wrap a").click(function(){
+		$(this).css("color","#59d5c9").siblings().css("color","#646464");
+		$(this).addClass("active").siblings().removeClass("active");
+		})  */
+	};
+</script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+  /*
+   * 注意：
+   * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+   * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+   * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+   *
+   * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+   * 邮箱地址：weixin-open@qq.com
+   * 邮件主题：【微信JS-SDK反馈】具体问题
+   * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+   */
+  wx.config({
+     debug: false,
+    appId: '{_signPackage.appId}',//'<?php echo $signPackage["appId"];?>',
+    timestamp: '{_signPackage.timestamp}',//'<?php echo $signPackage["timestamp"];?>,
+    nonceStr: '{_signPackage.nonceStr}',//''<?php echo $signPackage["nonceStr"];?>',
+    signature: '{_signPackage.signature}',//''<?php echo $signPackage["signature"];?>',
+    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','onMenuShareQZone'
+      // 所有要调用的 API 都要加到这个列表中
+    ]
+  });
+  wx.ready(function () {
+    // 在这里调用 API
+        wx.onMenuShareTimeline({
+        title: '{_type}-预约猫', // 分享标题
+        desc: '{_content}', // 分享描述
+        link: 'https://yuyuemao.cn/app/index.php?act=topicList', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/yuyuemao.jpg', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+        title: '{_type}-预约猫', // 分享标题
+        desc: '{_content}', // 分享描述
+        link: 'https://yuyuemao.cn/app/index.php?act=topicList', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/yuyuemao.jpg', // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+        // 用户取消分享后执行的回调函数
+        }
+        });
+
+         wx.onMenuShareQQ({
+        title: '{_type}-预约猫', // 分享标题
+        //desc: '{_content}', // 分享描述
+        link: 'https://yuyuemao.cn/app/index.php?act=topicList', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/yuyuemao.jpg', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareWeibo({
+        title: '{_type}-预约猫', // 分享标题
+        //desc: '{_content}', // 分享描述
+        link: 'https://yuyuemao.cn/app/index.php?act=topicList', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/yuyuemao.jpg', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareQZone({
+       title: '{_type}-预约猫', // 分享标题
+        //desc: '{_content}', // 分享描述
+        link: 'https://yuyuemao.cn/app/index.php?act=topicList', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/yuyuemao.jpg', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+  });
+</script>
+</body>
+</html>

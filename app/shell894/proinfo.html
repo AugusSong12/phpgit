@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>商品详情页</title>
+<meta content="易工场" name="keywords">
+<meta content="易工场" name="description">
+<meta http-equiv="Cache-Control" content="max-age=180">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link href="font/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="css/basestyle.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+</head>
+<body>
+<div class="wx-top">
+  <div class="proinfo-menu">
+    <i class="icon iconfont">&#xe603;</i>
+    <div class="down-list">
+      <s></s>
+      <a href="xiaoxi.html"><i class="icon iconfont">&#xe622;</i><span>消息</span></a>
+      <a href="index.html"><i class="icon iconfont">&#xe62c;</i><span>首页</span></a>
+      <a href="search.html"><i class="icon iconfont">&#xe617;</i><span>搜索</span></a>
+      <a href="my_guanzhu.html"><i class="icon iconfont">&#xe61a;</i><span>我的关注</span></a>
+      <a href="my_liulanjilu.html"><i class="icon iconfont">&#xe639;</i><span>浏览记录</span></a>
+      <a href="javascript:;" class="close"><img src="images/close.png" /></a>
+    </div>
+    <script type="text/javascript">
+    $(function () {
+		$(".proinfo-menu i").on("click",function(){
+			$(".down-list").slideDown(200);
+		});
+		$(".proinfo-menu .close").on("click",function(){
+			$(".down-list").hide();
+		});
+	});
+    </script>
+  </div>
+  <div class="top-title">女士运动鞋列表页</div>
+</div>
+<div class="top-blank"></div>
+<div class="wx-containe">
+  <div class="advBanner"> 
+    <div id="module_1" class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="two swiper-slide"><img src="upload/banner1.jpg" /></div>
+        <div class="two swiper-slide"><img src="upload/banner1.jpg" /></div>
+        <div class="two swiper-slide"><img src="upload/banner1.jpg" /></div>
+        <div class="two swiper-slide"><img src="upload/banner1.jpg" /></div>
+      </div>
+    <div class="swiper-pagination"></div> 
+    </div>
+  </div>
+<script type="text/javascript">
+  var swiper = new Swiper('#module_1.swiper-container', {
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      loop: true,
+      loopAdditionalSlides: 0,
+      autoplay: 3000, //可选选项，自动滑动
+      autoplayDisableOnInteraction: false
+  });
+</script>
+  <div class="proinfo-wrap">
+    <div class="pro-parameter cl">
+      <div class="pro-pri fl"><span>￥<em class="num">159</em></span></div>
+      <div class="pro-time fl">生产周期<em class="num">11</em>天</div>
+      <div class="pro-share fr"><a href="javascript:;"><i class="icon iconfont">&#xe60a;</i></a></div>
+    </div>
+    <div class="pro-biaoti">产品标题产品标题产品标题产品标题产品标题</div>
+    <div class="pro-description">
+      描述：<span>高档高档大气上档次的商品个战士高档大气上档次的商品高档大气上档次的商品个战士个战高档大气上档次的商品个战士士高档大气上档次的商品个战士大气上档次的商品个战士</span>
+    </div>
+    <div class="pro-operat"><a href="javascript:;"><img src="images/zan.png" /></a><a href="pingjia.html"><img src="images/ping.png" /></a><a href="javascript:;"><img src="images/shang.png" /></a></div>
+    <div class="zan-box">
+      <span>赞了</span>
+      <div class="zan-list">
+        <a href="javascript:;"><img src="images/touxiang.png" /></a>
+        <a href="javascript:;"><img src="images/touxiang.png" /></a>
+        <a href="javascript:;"><img src="images/touxiang.png" /></a>
+        <a href="javascript:;"><img src="images/touxiang.png" /></a>
+        <a href="javascript:;"><img src="images/touxiang.png" /></a>
+        <a href="javascript:;"><img src="images/touxiang.png" /></a>
+        <a href="javascript:;"><img src="images/touxiang.png" /></a>
+      </div>
+      <a href="wolai.html" class="link-mr"><i class="icon iconfont">&#xe62a;</i></a>
+    </div>
+    <div class="others-look">
+      <div class="tit"><span>大家都看了</span></div>
+      <div class="con">
+        <ul>
+          <li><a href="proinfo.html"><img src="upload/banner1.jpg" /></a></li>
+          <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
+          <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
+          <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
+          <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
+          <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="process">
+      <div class="fl">定制流程：</div>
+      <div class="fr">
+        <span><i class="icon iconfont">&#xe615;</i>下单</span>
+        <span><i class="icon iconfont">&#xe606;</i>设计</span>
+        <span><i class="icon iconfont">&#xe61d;</i>制作</span>
+        <span><i class="icon iconfont">&#xe62d;</i>发货</span>
+        <span><i class="icon iconfont">&#xe61b;</i>评价</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ft-blank"></div>
+<div class="proinfo-footer">
+  <a href="dianpu.html"><i class="icon iconfont">&#xe611;</i><p>店铺</p></a>
+  <a href="guanzhu.html"><i class="icon iconfont">&#xe61a;</i><p>关注</p></a>
+  <a href="zengpengyou.html"><i class="icon iconfont">&#xe623;</i><p>赠朋友</p></a>
+  <a href="jvbao.html"><i class="icon iconfont">&#xe61f;</i><p>举报</p></a>
+  <a href="goumai.html" class="shop">立即购买</a>
+</div>
+</body>
+</html>

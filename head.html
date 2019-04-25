@@ -1,0 +1,270 @@
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="index.php?m=user&act=calendar" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>预约</b>猫</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>预约</b>猫</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+          
+          <!-- Notifications: style can be found in dropdown.less -->
+          <li class="dropdown notifications-menu">
+            <a href="javascript:history.back()" class="dropdown-toggle" data-toggle="">
+              <i class="fa fa-arrow-left"></i>
+              
+              <span class="label label-info"></span>
+            
+            </a>
+          </li>
+          <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="offcanvas">
+              <i class="fa fa-angle-double-right"></i>
+              
+              <span class="label label-info"></span>
+            
+            </a>
+          </li>
+          <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              {_IF msgnum>0}
+              <span class="label label-warning">{_msgnum}</span>
+              {ENDIF}
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">您有 {_msgnum} 个重要消息</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-users text-aqua"></i> {_viewtimes} 人访问您的服务
+                    </a>
+                  </li>
+                  {_FOREACH msg}
+                  <li>
+                    <a href="{_url}">
+                      <i class="fa fa-warning text-yellow"></i> {_msg}
+                    </a>
+                  </li>
+                  {ENDFOR}
+                  <!--
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-users text-red"></i> 5 new members joined
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-user text-red"></i> You changed your username
+                    </a>
+                  </li>-->
+                </ul>
+              </li>
+             <li class="footer"><a href="#">点击以上消息直接去处理</a></li>
+            </ul>
+          </li>
+         
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="{_pic}" class="user-image" alt="">
+              <span class="hidden-xs">{_username}-{_name}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="{_pic}" class="img-circle" alt="">
+
+                <p>
+                  {_username}-{_name}
+                  <small>{_regdt}</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+            <!--  <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+                <!-- /.row -->
+            <!--  </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="index.php?m=user&act=profile" class="btn btn-default btn-flat">修改资料</a>
+                </div>
+                <div class="pull-right">
+                  <a href="index.php?m=user&act=logout" class="btn btn-default btn-flat">退出</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+   
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        <li class="header">主菜单</li>
+        <li class="{_IF act=resEdit}active{ENDIF}  {_IF op=e}active{ENDIF} treeview">
+          <a href="#">
+            <i class="fa  fa-cubes"></i> <span>服务管理</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=" {_IF act=resEdit}active{ENDIF} "><a href="index.php?m=user&act=resEdit"><i class="fa fa-pencil"></i> 发布服务</a></li>
+            <li {_IF op=e} class="active" {ENDIF}><a href="index.php?m=user&act=resList&op=e"><i class="fa fa-pencil-square-o"></i> 服务列表</a></li>
+          </ul>
+        </li>
+        <li class="{_IF act=oList} active {ENDIF} {_IF op=y} active {ENDIF} {_IF act=calendar} active {ENDIF}treeview">
+          <a href="#">
+            <i class="fa fa-book"></i>
+            <span>订单管理</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+          </a>
+           <ul class="treeview-menu">
+            <li class=" {_IF op=y}active{ENDIF} "><a href="index.php?m=user&act=resList&op=y"><i class="fa fa-pencil-square-o"></i>预约预订</a></li>
+          
+             <li {_IF act=calendar} class="active" {ENDIF}><a href="index.php?m=user&act=calendar"><i class="fa  fa-calendar"></i> 订单查询</a></li>
+              <li {_IF act=oList} class="active" {ENDIF}><a href="index.php?m=user&act=oList"><i class="fa fa-calendar-check-o"></i> 订单跟踪</a></li>
+          </ul>
+        </li>
+        <li class="{_IF act=profile} active {ENDIF} ">
+          <a href="index.php?m=user&act=profile">
+            <i class="fa fa-pie-chart"></i>
+            <span>商家资料</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+        <li class="{_IF act=custList} active {ENDIF} ">
+          <a href="index.php?m=user&act=custList">
+            <i class="fa fa-group"></i>
+            <span>客户管理</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+        <li class="{_IF act=smsList} active {ENDIF} ">
+          <a href="index.php?m=user&act=smsList">
+            <i class="fa fa-comments-o"></i>
+            <span>通知管理</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+        <li class="{_IF act=hrList} active {ENDIF} ">
+          <a href="index.php?m=user&act=hrList">
+            <i class="fa fa-user-plus"></i>
+            <span>招聘管理</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li class="{_IF act=actList} active {ENDIF} ">
+          <a href="index.php?m=user&act=actList">
+            <i class="fa fa-cc-discover"></i>
+            <span>促销管理</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li class="{_IF act=acount} active {ENDIF} ">
+          <a href="index.php?m=user&act=acount">
+            <i class="fa fa-money"></i>
+            <span>财务</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+        {_IF ustatus>2}
+        <li class="{_IF act=userManage} active {ENDIF} ">
+          <a href="index.php?m=user&act=userManage">
+            <i class="fa fa-user"></i>
+            <span>用户管理</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        {ENDIF}
+         {_IF ustatus>1}
+        <li class="{_IF act=orderManage} active {ENDIF} ">
+          <a href="index.php?m=user&act=orderManage">
+            <i class="fa fa-line-chart"></i>
+            <span>供应商业绩统计</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+        <li class="{_IF act=custManage} active {ENDIF} ">
+          <a href="index.php?m=user&act=custManage">
+            <i class="fa fa-area-chart"></i>
+            <span>流量方业绩统计</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+         
+        </li>
+         {ENDIF}
+        
+     
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  

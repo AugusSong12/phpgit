@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>{_name} 预约猫 商品详情</title>
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <meta name="keywords" content="预约猫,  {_name}"/>
+    <meta name="description" content=" 预约猫让您不再排队，享受VIP般的尊贵服务，不用现场排队，不用现场买单
+预约猫让商家的资源使用高效而有秩序，通过预约，让时间变得可管理、有序的客流让你不会太闲也不会太忙。"/>
+    
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/response.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+ 
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="../plugins/timepicker/bootstrap-timepicker.min.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?83fc41ced71de2d6a049a7b2bc8ea112";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  </head>
+  <body>
+    <div class="maincont">
+     <header>
+      <a href="javascript:history.back(-1)" class="back-off fl"><span class="glyphicon glyphicon-menu-left"></span></a>
+      <div class="head-mid">
+       <h1>产品详情 <small class="orange">分享给朋友来召唤他们一起参与<span class="glyphicon glyphicon-hand-up"></span></small></h1>
+      </div>
+     </header>
+     <div id="sliderA" class="slider">
+     {_FOREACH pic}
+      <img src="../{_picname}" />
+      {ENDFOR}
+     
+     </div><!--sliderA/-->
+     
+     <table class="jia-len">
+      <tr>
+       <th><strong class="orange">{_price}</strong> <small>闲时价：{_xian.price}</small></th>
+       <td>
+        <input type="text" class="spinnerExample" />
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <strong>{_name}</strong> <small>销量:{_sales}</small>
+        <p class="hui">营业时间：{_begin1}-{_end1} {_IF begin2} {_begin2}-{_end2} {ENDIF}</p>
+       </td>
+       <td align="right">
+        <a href="javascript:;" class="shoucang"><span class="glyphicon glyphicon-star-empty"></span></a>
+       </td>
+      </tr>
+     </table>
+    <!-- <div class="height2" >请选择日期</div>-->
+     <h3 class="proTitle">预约时段</h3>
+     <ul class="guige">
+      <!--<li class="guigeCur"><a href="javascript:;">{_unit}分钟</a></li>-->
+     <!-- {_FOREACH unitlist}
+      <li><a href="javascript:;">{_0}</a></li>
+      {ENDFOR}
+      -->
+      
+      <div class="clearfix">
+        
+      </div>
+     </ul><!--guige/-->
+      <form id="fm1" action="index.php?act=confirm" method="post">
+     <div class="height2">
+
+
+              <div class="form-group ">
+                
+
+                <div class="input-group date ">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="选择预订日期" name='dt'>
+                </div>
+                <!-- /.input group -->
+              </div>
+
+
+<div class="clearfix">
+        
+      </div>
+     </div>
+    
+     <table class="jrgwc" width="100%">
+      
+      
+       <td align="right">
+       <p>
+      
+       <input type="hidden" id="timerange" name="timerange">
+       <input type="hidden" id="num" name="num" value="1">
+       <input type="hidden" name="serviceid" id="serviceid" value="{_id}" >
+
+       <a href="#" class="btn btn-danger btn-block"><span class="glyphicon glyphicon-shopping-cart"></span>预订</a>
+    
+       </p>
+       </td>
+      </tr>
+     </table>
+        </form>
+
+    
+     <div class="zhaieq">
+      <a href="javascript:;" class="zhaiCur">服务简介</a>
+      <a href="javascript:;">商品参数</a>
+      <a href="javascript:loadOrderList();" style="background:none;">订购列表</a>
+      <div class="clearfix"></div>
+     </div><!--zhaieq/-->
+     <div class="proinfoList">
+      <strong>下单后可以在订单上看到商家电话并与商家联系确认</strong>
+      <br>
+     营业时间：{_begin1}-{_end1} {_IF begin2} {_begin2}-{_end2} {ENDIF}
+     <br>
+     闲时价时间段：周{_xian.stopweekday} {_xian.begin1}-{_xian.end1}
+     <br>
+     最小预订时间单位：{_unit}分钟
+     <br>
+     周休息日：{_stopweekday}
+      <!--<img src="images/image4.jpg" width="636" height="822" />-->
+<br>
+公司名：<big><a href="index.php?act=shop&id={_userid}"> <font color="#0000FF"> {_userinfo.name} </font></a></big>
+<br>
+地址：{_userinfo.address}
+<br>
+服务内容：{_userinfo.into}
+<br>
+      <a href="index.php?act=code2&url={_url}&title={_name}"><font color="#FF0000"> 下载二维码</font></a>
+      <br>
+      {_remark}
+     </div><!--proinfoList/-->
+     
+     <div class="proinfoList">
+      暂无信息....
+     </div><!--proinfoList/-->
+     <div class="proinfoList" id="orderlist">
+     </div><!--proinfoList/-->
+     
+    </div><!--maincont-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+
+    <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="../plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
+
+    <!-- bootstrap time picker -->
+    <script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <!--焦点轮换-->
+    <script src="js/jquery.excoloSlider.js"></script>
+    <script>
+		$(function () {
+		 $("#sliderA").excoloSlider();
+		});
+
+    var loaded=false;
+    function loadOrderList()
+    {
+      if(!loaded){
+
+        loaded=true;
+       $.getJSON("index.php?act=ajaxOrderList&id={_id}",function(result){
+            $.each(result, function(i, field){
+                $("#orderlist").append(field['begintime'] + " " + field['name'] + " " +field['comment']+'<span class="glyphicon glyphicon-thumbs-'+((field['thumbs']=='1')?'up':'down')+' "></span><br>' );
+            });
+        });  
+     }
+    }
+
+	</script>
+     <!--jq加减-->
+    <script src="js/jquery.spinner.js"></script>
+   <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+  /*
+   * 注意：
+   * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+   * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+   * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+   *
+   * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+   * 邮箱地址：weixin-open@qq.com
+   * 邮件主题：【微信JS-SDK反馈】具体问题
+   * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+   */
+  wx.config({
+     debug: false,
+    appId: '{_signPackage.appId}',//'<?php echo $signPackage["appId"];?>',
+    timestamp: '{_signPackage.timestamp}',//'<?php echo $signPackage["timestamp"];?>,
+    nonceStr: '{_signPackage.nonceStr}',//''<?php echo $signPackage["nonceStr"];?>',
+    signature: '{_signPackage.signature}',//''<?php echo $signPackage["signature"];?>',
+    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','onMenuShareQZone'
+      // 所有要调用的 API 都要加到这个列表中
+    ]
+  });
+  wx.ready(function () {
+    // 在这里调用 API
+        wx.onMenuShareTimeline({
+        title: '{_name}-预约猫', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=serviceinfo&id={_id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/{_pic.0.picname}', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+        title: '{_name}-预约猫', // 分享标题
+        desc: '', // 分享描述
+        link: 'https://yuyuemao.cn/app/index.php?act=serviceinfo&id={_id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/{_pic.0.picname}', // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+        // 用户取消分享后执行的回调函数
+        }
+        });
+
+         wx.onMenuShareQQ({
+        title: '{_name}-预约猫', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=serviceinfo&id={_id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/{_pic.0.picname}', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareWeibo({
+        title: '{_name}-预约猫', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=serviceinfo&id={_id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/{_pic.0.picname}', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareQZone({
+        title: '{_name}-预约猫', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=serviceinfo&id={_id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/{_pic.0.picname}', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+  });
+
+	$('.spinnerExample').spinner({max:{_num},min:1,step:1,value:1});
+
+
+
+  $(function () {
+   
+    //Date picker
+    $('#datepicker').datepicker({
+      language: "zh-CN",
+      autoclose: true,
+      format: "yyyy-mm-dd",
+      defaultDate : new Date() ,
+      startDate:new Date()  
+    });
+
+
+
+    $("#datepicker").focus(function(){
+        document.activeElement.blur();
+    });
+
+    //Timepicker
+    $(".timepicker").timepicker({
+      showInputs: true
+    });
+
+
+
+    var pkvalue="";
+    $("#datepicker").change(function(){
+
+    if(this.value!=pkvalue)
+    {
+     // alert(this.value);
+      pkvalue=this.value;
+      
+     $.get(
+        'index.php?act=ajaxTimeList', 
+        {
+          dt: this.value,
+          id:{_id},
+        }, 
+        function(data, textStatus, xhr) 
+        {
+          var tmp="";
+          data=$.parseJSON(data);
+          for(x in data)
+          {
+            if(data[x][1]=="0")
+            {
+              if(data[x][3]>"0")
+                tmp+='<li><a href="javascript:;">'+data[x][0]+' <font color=red>¥'+data[x][3]+'</font></a></li>';
+              else
+                tmp+='<li><a href="javascript:;">'+data[x][0]+'</a></li>';
+            }
+            else if(data[x][3]>"0")
+            tmp+='<li><a href="javascript:;">'+data[x][0]+'-'+data[x][1]+' <font color=red>¥'+data[x][3]+'</font></a></li>';
+            else
+              tmp+='<li><a href="javascript:;">'+data[x][0]+'-'+data[x][1]+'</a></li>';
+
+          }
+
+          if(data.length<1)
+            tmp+='<li><a href="javascript:;">该天不能预约</a></li>';
+
+          tmp+='<div class="clearfix"> </div>';
+          
+          $(".guige").html(tmp);
+          
+        });
+    }
+    
+
+    });
+
+    $(".guige").on('click',' li',function(event) {
+      /* Act on the event */
+    //console.log(event);
+      // cura=$(this).find('a');
+      cura=$(this);
+      if(cura.attr('class')!="active2")
+      {
+        //this.className="active2";
+        cura.attr("class","active2");
+      }
+      else
+      {
+        //this.className="";
+        cura.attr("class","");
+      }
+    });
+
+    $(".btn").click(function(event) {
+      /*传id和时间段给后台  */
+      tmp="";
+
+      $(".active2").each(function(index, el) {
+        tmp+=" "+$(this).text();
+      });
+      num=$('.spinnerExample').val();
+      if(num>0)
+        $("#num").val(num);
+//alert(tmp);
+      $("#timerange").val(tmp);
+    
+      $("#fm1").submit();
+        /* Act on the event */
+      //});
+
+    });
+
+  });
+</script>
+  </body>
+</html>

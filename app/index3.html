@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>预约猫</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="images/favicon.ico" />
+	<meta name="keywords" content="预约猫  {_FOREACH typelist} ,{_name} {ENDFOR}"/>
+    <meta name="description" content="预约猫让您不再排队，享受VIP般的尊贵服务，不用现场排队，不用现场买单
+预约猫让商家的资源使用高效而有秩序，通过预约，让时间变得可管理、有序的客流让你不会太闲也不会太忙。"/>
+	<link rel="stylesheet" href="skin/css/reset.css">
+	<link rel="stylesheet" href="skin/css/screen.css">
+	<link rel="stylesheet" href="skin/css/swiper.min.css">
+	<script type="text/javascript">
+	/*	var pixclPatio = 1 / window.devicePixelRatio;
+		document.write('<meta name="viewport" content="width=device-width,initial-scale='+pixclPatio+',minimum-scale='+pixclPatio+',maximum-scale='+pixclPatio+',user-scalable=no" />');*/
+	</script>
+	 <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?83fc41ced71de2d6a049a7b2bc8ea112";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+</head>
+<body>
+	<div class="header index">
+		<div class="hearder-left left">
+			<div class="address">
+				<span class="name"><a href="index.php?act=city"><font color="#f60"><b>{_city}</b></font></a></span>
+				<i></i>
+				<span class="weather-icon"></span>
+			</div>
+			<div class="date"></div>
+		</div>
+		<div class="header-right right">
+		<form action="index.php?act=index" method="get" class="search">
+			<input type="search" name="keyword" class="search01" placeholder="搜索">
+		</form>
+		</div>
+	</div><!--header-->
+	
+	<div class="content">
+		<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide"><a href="index.php?act=topicList&id=2"><img src="adimage/zhaopin.png" alt="招聘"></a></div>
+					<div class="swiper-slide"><a href="index.php?act=topicList&id=1"><img src="adimage/sales.png" alt="促销"></a></div>
+					<div class="swiper-slide"><a href="index.php?act=topicList&id=0"><img src="adimage/juhui.png" alt="聚会"></a></div>
+				</div>	
+		</div><!--swiper-container-->
+		
+		<div class="wrapper wrapper01" id="retr">
+				<div class="scroller" id="nav">
+					<ul class="clearfix">
+						 {_FOREACH typelist}
+			     <li> <a href="index.php?act=prolist&tid={_id}">{_name}</a></li>
+			      {ENDFOR}
+					
+					</ul>
+				</div>
+			</div>
+
+	
+		
+			<div class="pb-flex" style="overflow-y: auto;">
+			  {_FOREACH prodlist}
+      		<div class="box">
+				<div class="pic">
+					<a href="index.php?act=serviceinfo&id={_id}"><img src="../{_pic}" /></a>
+					<div class="img-mess">
+					
+						<a href="index.php?act=serviceinfo&id={_id}"><h3 class="img-tit">{_name}</h3></a>
+						<div class="read">
+							<!--span>{_address}</span-->
+							<span><i class="pf-icon"></i> {_sales}</span>
+							<span><i class="read-icon"></i> {_viewtimes}</span>
+							<span class="price">￥{_price}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+ 			{ENDFOR}			
+		</div><!--pb-flex-->
+				
+		<div class="shadow">
+			<div class="tc">
+				<div class="choose-area">
+						<span class="left">选择地区</span>
+						<span class="right qx">取消</span>
+				</div>
+				<div class="area-list">
+					<i>全部</i>
+					<span>北京</span>
+					<span>上海</span>
+					<span>广州</span>
+					<span>深圳</span>
+					<span>南京</span>
+					<span>杭州</span>
+					<span>重庆</span>
+					<span>沈阳</span>
+				</div>
+				<div class="more-area">
+					<span>更多地区>></span> 
+				</div>
+			</div><!--tc-->		
+		</div><!--shadow-->
+	
+	</div><!--content-->
+	<script src="skin/js/jquery-2.1.1.min.js"></script>
+	
+	<!--script src="skin/js/touchScroll.js"></script-->
+	<script src="skin/js/swiper.min.js"></script>
+	<script src="skin/js/screen.js"></script>
+<!--script type="text/javascript" src="skin/js/flexible.js"></script-->
+<script type="text/javascript" src="skin/js/iscroll.js"></script>
+<script type="text/javascript" src="skin/js/navbarscroll.js"></script>
+
+<script>
+	window.onload=function()
+	{
+		$('.wrapper').navbarscroll();
+		/* var oWrap=document.getElementById("wrap");
+		var oNav=document.getElementById("nav");
+		oNav.style.width=oNav.scrollWidth+"px";
+		var oScroll=new MScroll(oWrap,"x");
+		$("#wrap a").click(function(){
+		$(this).css("color","#59d5c9").siblings().css("color","#646464");
+		$(this).addClass("active").siblings().removeClass("active");
+		})  */
+	};
+</script>
+
+	
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>  
+
+
+  /*
+   * 注意：
+   * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+   * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+   * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+   *
+   * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+   * 邮箱地址：weixin-open@qq.com
+   * 邮件主题：【微信JS-SDK反馈】具体问题
+   * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+   */
+  wx.config({
+    debug: false,
+    appId: '{_signPackage.appId}',//'<?php echo $signPackage["appId"];?>',
+    timestamp: '{_signPackage.timestamp}',//'<?php echo $signPackage["timestamp"];?>,
+    nonceStr: '{_signPackage.nonceStr}',//''<?php echo $signPackage["nonceStr"];?>',
+    signature: '{_signPackage.signature}',//''<?php echo $signPackage["signature"];?>',
+    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','onMenuShareQZone'
+      // 所有要调用的 API 都要加到这个列表中
+    ]
+  });
+
+
+
+  wx.ready(function () {
+    // 在这里调用 API
+        wx.onMenuShareTimeline({
+        title: '预约猫-未来尽在掌握', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=index', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/jrwm.jpg', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+        title: '{_IF xian} 闲时价服务 {ENDIF}预约猫-未来尽在掌握', // 分享标题
+        desc: '会议室预约，宴会厅预约，家教预约，健身场地预约', // 分享描述
+        link: 'https://yuyuemao.cn/app/index.php?act=index', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/jrwm.jpg', // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+        // 用户取消分享后执行的回调函数
+        }
+        });
+
+        wx.onMenuShareQQ({
+        title: '预约猫-未来尽在掌握', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=index', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/jrwm.jpg', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareWeibo({
+        title: '预约猫-未来尽在掌握', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=index', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/jrwm.jpg', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareQZone({
+        title: '预约猫-未来尽在掌握', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=index', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/jrwm.jpg', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+
+
+  });
+
+
+
+
+
+	</script>
+		
+	{_INCLUDE foot2.html}

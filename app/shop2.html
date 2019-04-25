@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{_shop.name} 预约猫</title>
+	 <link rel="shortcut icon" href="images/favicon.ico" />
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="skin/css/reset.css">
+	<link rel="stylesheet" href="skin/css/screen.css">
+	<link rel="stylesheet" href="skin/css/swiper.min.css">
+	<script src="skin/js/jquery-2.1.1.min.js"></script>
+	<script src="skin/js/swiper.min.js"></script>
+	<script src="skin/js/screen.js"></script>
+	 <meta name="keywords" content="预约猫,  {_shop.name},{_FOREACH prodlist} , {_name} {ENDFOR}"/>
+    <meta name="description" content="  {_shop.into} 预约猫让您不再排队，享受VIP般的尊贵服务，不用现场排队，不用现场买单
+预约猫让商家的资源使用高效而有秩序，通过预约，让时间变得可管理、有序的客流让你不会太闲也不会太忙。"/>
+
+	<script type="text/javascript">
+		var pixclPatio = 1 / window.devicePixelRatio;
+		document.write('<meta name="viewport" content="width=device-width,initial-scale='+pixclPatio+',minimum-scale='+pixclPatio+',maximum-scale='+pixclPatio+',user-scalable=no" />');
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?83fc41ced71de2d6a049a7b2bc8ea112";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+
+</script>
+
+	
+</head>
+<body>
+	<div class="project-detail">
+		<div class="p-header">
+			<span class="back left"></span>
+			<span class="share right"></span>
+			<span class="collect right"></span>
+		</div>
+		<div class="content contents" style="padding-top: 0;">
+			<div class="swiper-container sj-swiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide"><img src="../{_shop.pic}" alt="项目详情" class="projectbj"></div>
+					<!--div class="swiper-slide"><img src="skin/images/projectbj.png" alt="项目详情" class="projectbj"></div>
+					<div class="swiper-slide"><img src="skin/images/projectbj.png" alt="项目详情" class="projectbj"></div-->
+				</div>	
+			</div><!--swiper-container-->
+			<div class="shop-mess">
+				<div class="name">
+					<div class="tit left">{_shop.name}</div>
+					<a href="index.php?act=code2&url={_url}&title={_shop.name}">
+						<img src="skin/images/two_code.png" class="two-code right">
+					</a>
+				</div>
+				<div class="time">
+					<span class="yy-time left">营业时间：{_prodlist.0.begin1}-{_prodlist.0.end1} {_prodlist.0.begin2}-{_prodlist.0.end2}</span>
+					<span class="tel right">电话：<a href="tel:{_shop.mobile}">{_shop.mobile}</a></span>
+				</div>
+				<div class="address">
+					{_shop.address}
+					<i class="more"></i>
+				</div>
+			</div>
+		
+			<div class="lists">
+				<!--循环list-->
+				 {_FOREACH prodlist}
+				<div class="list">
+					<a href="index.php?act=serviceinfo&id={_id}">
+					<img src="../{_pic}" alt="" class="img08">
+					<div class="list-detail">
+						<h3>
+							{_name}
+						</h3>
+						<span class="rate">好评率：98%</span>
+						<span class="price">¥{_price}</span>
+						<span class="count">已预约：1024次</span>
+						<i class="more"></i>
+					</div></a>
+				</div>
+				{ENDFOR}
+				
+		</div><!--content-->
+		<!--div class="bottom">
+			<dl>
+				<dt><img src="skin/images/icon21.png" alt="" class="icon21"> </dt>
+				<dd>客服</dd>
+			</dl>
+			<dl>
+				<dt><img src="skin/images/icon22.png" alt="" class="icon22"> </dt>
+				<dd>会员卡预约</dd>
+			</dl>
+			<div class="active">活动</div>
+		</div-->
+	</div>
+
+ <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script>
+  /*
+   * 注意：
+   * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+   * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+   * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+   *
+   * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+   * 邮箱地址：weixin-open@qq.com
+   * 邮件主题：【微信JS-SDK反馈】具体问题
+   * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+   */
+  wx.config({
+     debug: false,
+    appId: '{_signPackage.appId}',//'<?php echo $signPackage["appId"];?>',
+    timestamp: '{_signPackage.timestamp}',//'<?php echo $signPackage["timestamp"];?>,
+    nonceStr: '{_signPackage.nonceStr}',//''<?php echo $signPackage["nonceStr"];?>',
+    signature: '{_signPackage.signature}',//''<?php echo $signPackage["signature"];?>',
+    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','onMenuShareQZone'
+      // 所有要调用的 API 都要加到这个列表中
+    ]
+  });
+  wx.ready(function () {
+    // 在这里调用 API
+        wx.onMenuShareTimeline({
+        title: '{_shop.name}-预约猫', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=shop&id={_shop.id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/{_shop.pic}', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+        title: '{_shop.name}-预约猫', // 分享标题
+        desc: '', // 分享描述
+        link: 'https://yuyuemao.cn/app/index.php?act=shop&id={_shop.id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/{_shop.pic}', // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+        // 用户取消分享后执行的回调函数
+        }
+        });
+
+        wx.onMenuShareQQ({
+        title: '{_shop.name}-预约猫', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=shop&id={_shop.id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/{_shop.pic}', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareWeibo({
+        title: '{_shop.name}-预约猫', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=shop&id={_shop.id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/{_shop.pic}', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareQZone({
+        title: '{_shop.name}-预约猫', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=shop&id={_shop.id}', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/{_shop.pic}', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+  });
+
+
+      function shoucang()
+      {
+
+        $.get('index.php?act=ajaxFavite&id={_shop.id}', null, function(data, textStatus, xhr) {
+          /*optional stuff to do after success */
+          alert("已经添加到收藏");
+          $("#sc").find('a').attr('class', 'hot'); 
+
+        });
+
+     
+    }
+
+    $(".back").click(function(event) {
+	/* Act on the event */
+	history.back();
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="email=no">
+<title>touch on mobile</title>
+<link href="font/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="css/basestyle.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script src="js/scroll.js"></script>
+<script src="js/iscroll-probe.js"></script>
+<script>
+var myScroll;
+var pullDownFlag,pullUpFlag;
+var pullDown,pullUp;
+var spinner;
+function positionJudge(){
+    if(this.y>40){    //判断下拉
+        pullDown.innerHTML = "放开刷新页面";
+        pullDownFlag = 1;
+    }else if(this.y<(this.maxScrollY-40)){   //判断上拉
+        pullUp.innerHTML = "加载页面";
+        pullUpFlag = 1;
+    }
+}
+function action(){
+    if(pullDownFlag==1){
+        pullDownAction();
+        pullDown.innerHTML = "下拉加载页面…";
+        pullDownFlag = 0;
+    }else if(pullUpFlag==1){
+        pullUpAction();
+        pullUp.innerHTML = "上拉刷新…";
+        pullUpFlag = 0;
+    }
+}
+function loaded(){
+    pullDownFlag = 0;
+    pullUpFlag = 0;
+    pullDown = document.getElementById("pullDown");
+    pullUp = document.getElementById("pullUp");
+    spinner = document.getElementById("spinner");
+    myScroll = new IScroll("#wrapper",{
+        probeType: 3,
+//        momentum: false,//关闭惯性滑动
+        mouseWheel: true,//鼠标滑轮开启
+        scrollbars: true,//滚动条可见
+        fadeScrollbars: true,//滚动条渐隐
+        interactiveScrollbars: true,//滚动条可拖动
+        shrinkScrollbars: 'scale', // 当滚动边界之外的滚动条是由少量的收缩
+        useTransform: true,//CSS转化
+        useTransition: true,//CSS过渡
+        bounce: true,//反弹
+        freeScroll: false,//只能在一个方向上滑动
+        startX: 0,
+        startY: 0,
+//        snap: "li",//以 li 为单位
+    });
+    myScroll.on('scroll',positionJudge);
+    myScroll.on("scrollEnd",action);
+}
+function pullDownAction(){
+    spinner.style.display = "block";
+    setTimeout(function(){
+        spinner.style.display = "none";
+        myScroll.refresh();
+    },1000);
+}
+function pullUpAction(){
+    spinner.style.display = "block";
+    setTimeout(function(){
+        spinner.style.display = "none";
+        myScroll.refresh();
+    },1000);
+}
+function updatePosition(){
+pullDown.innerHTML = this.y>>0;
+}
+document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+}, false);
+document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+}, false);
+myScroll.on('scroll',positionJudge);
+myScroll.on("scrollEnd",action);
+</script>
+</head>
+
+<body onload="loaded()">
+<header>iScroll</header>
+<div id="wrapper">
+  <div id="scroller" class="pro-list-con">
+    <div id="pullDown"> <span>下拉刷新…</span> </div>
+    <ul id="list">
+      <li class="items">
+        <div class="img"><img src="upload/proimg.jpg"></div>
+        <div class="info">
+          <div class="des"><span>描述：</span>玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰色 移动联通电</div>
+          <div class="pri">¥<em class="num">2298.00</em></div>
+          <div class="reply"><span><em class="num">3755</em>人赞了</span><span><em class="num">375</em>人评价</span></div>
+        </div>
+      </li>
+      <li class="items">
+        <div class="img"><img src="upload/proimg.jpg"></div>
+        <div class="info">
+          <div class="des"><span>描述：</span>玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰色 移动联通电</div>
+          <div class="pri">¥<em class="num">2298.00</em></div>
+          <div class="reply"><span><em class="num">3755</em>人赞了</span><span><em class="num">375</em>人评价</span></div>
+        </div>
+      </li>
+      <li class="items">
+        <div class="img"><img src="upload/proimg.jpg"></div>
+        <div class="info">
+          <div class="des"><span>描述：</span>玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰色 移动联通电</div>
+          <div class="pri">¥<em class="num">2298.00</em></div>
+          <div class="reply"><span><em class="num">3755</em>人赞了</span><span><em class="num">375</em>人评价</span></div>
+        </div>
+      </li>
+      <li class="items">
+        <div class="img"><img src="upload/proimg.jpg"></div>
+        <div class="info">
+          <div class="des"><span>描述：</span>玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰色 移动联通电</div>
+          <div class="pri">¥<em class="num">2298.00</em></div>
+          <div class="reply"><span><em class="num">3755</em>人赞了</span><span><em class="num">375</em>人评价</span></div>
+        </div>
+      </li>
+      <li class="items">
+        <div class="img"><img src="upload/proimg.jpg"></div>
+        <div class="info">
+          <div class="des"><span>描述：</span>玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰色 移动联通电</div>
+          <div class="pri">¥<em class="num">2298.00</em></div>
+          <div class="reply"><span><em class="num">3755</em>人赞了</span><span><em class="num">375</em>人评价</span></div>
+        </div>
+      </li>
+      <li class="items">
+        <div class="img"><img src="upload/proimg.jpg"></div>
+        <div class="info">
+          <div class="des"><span>描述：</span>玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰色 移动联通电</div>
+          <div class="pri">¥<em class="num">2298.00</em></div>
+          <div class="reply"><span><em class="num">3755</em>人赞了</span><span><em class="num">375</em>人评价</span></div>
+        </div>
+      </li>
+      <li class="items">
+        <div class="img"><img src="upload/proimg.jpg"></div>
+        <div class="info">
+          <div class="des"><span>描述：</span>玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰色 移动联通电</div>
+          <div class="pri">¥<em class="num">2298.00</em></div>
+          <div class="reply"><span><em class="num">3755</em>人赞了</span><span><em class="num">375</em>人评价</span></div>
+        </div>
+      </li>
+      <li class="items">
+        <div class="img"><img src="upload/proimg.jpg"></div>
+        <div class="info">
+          <div class="des"><span>描述：</span>玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰色 移动联通电</div>
+          <div class="pri">¥<em class="num">2298.00</em></div>
+          <div class="reply"><span><em class="num">3755</em>人赞了</span><span><em class="num">375</em>人评价</span></div>
+        </div>
+      </li>
+      <li class="items">
+        <div class="img"><img src="upload/proimg.jpg"></div>
+        <div class="info">
+          <div class="des"><span>描述：</span>玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰色 移动联通电</div>
+          <div class="pri">¥<em class="num">2298.00</em></div>
+          <div class="reply"><span><em class="num">3755</em>人赞了</span><span><em class="num">375</em>人评价</span></div>
+        </div>
+      </li>
+      <li class="items">
+        <div class="img"><img src="upload/proimg.jpg"></div>
+        <div class="info">
+          <div class="des"><span>描述：</span>玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰金色 移动动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰动联通电玫瑰金色 移动联通电玫瑰金色 移动联通电玫瑰色 移动联通电</div>
+          <div class="pri">¥<em class="num">2298.00</em></div>
+          <div class="reply"><span><em class="num">3755</em>人赞了</span><span><em class="num">375</em>人评价</span></div>
+        </div>
+      </li>
+    </ul>
+    <div id="pullUp"><span>123</span></div>
+  </div>
+</div>
+<div id="spinner">
+  <div class="loading-box">
+    <div class="list-loading-icon">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

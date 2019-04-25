@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>评论</title>
+<meta content="易工场" name="keywords">
+<meta content="易工场" name="description">
+<meta http-equiv="Cache-Control" content="max-age=180">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link href="font/iconfont.css" rel="stylesheet" type="text/css" />
+<link href="css/basestyle.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script src="js/iscroll-probe.js"></script>
+<script>
+var myScroll;
+var pullDownFlag,pullUpFlag;
+var pullDown,pullUp;
+var spinner;
+function positionJudge(){
+    if(this.y>40){    //判断下拉
+        pullDown.innerHTML = "放开刷新页面";
+        pullDownFlag = 1;
+    }else if(this.y<(this.maxScrollY-40)){   //判断上拉
+        pullUp.innerHTML = "加载页面";
+        pullUpFlag = 1;
+    }
+}
+function action(){
+    if(pullDownFlag==1){
+        pullDownAction();
+        pullDown.innerHTML = "下拉加载页面…";
+        pullDownFlag = 0;
+    }else if(pullUpFlag==1){
+        pullUpAction();
+        pullUp.innerHTML = "上拉刷新…";
+        pullUpFlag = 0;
+    }
+}
+function loaded(){
+    pullDownFlag = 0;
+    pullUpFlag = 0;
+    pullDown = document.getElementById("pullDown");
+    pullUp = document.getElementById("pullUp");
+    spinner = document.getElementById("spinner");
+    myScroll = new IScroll("#wrapper",{
+        probeType: 3,
+//        momentum: false,//关闭惯性滑动
+        mouseWheel: true,//鼠标滑轮开启
+        scrollbars: true,//滚动条可见
+        fadeScrollbars: true,//滚动条渐隐
+        interactiveScrollbars: true,//滚动条可拖动
+        shrinkScrollbars: 'scale', // 当滚动边界之外的滚动条是由少量的收缩
+        useTransform: true,//CSS转化
+        useTransition: true,//CSS过渡
+        bounce: true,//反弹
+        freeScroll: false,//只能在一个方向上滑动
+        startX: 0,
+        startY: 0,
+//        snap: "li",//以 li 为单位
+    });
+    myScroll.on('scroll',positionJudge);
+    myScroll.on("scrollEnd",action);
+}
+function pullDownAction(){
+    spinner.style.display = "block";
+    setTimeout(function(){
+        spinner.style.display = "none";
+        myScroll.refresh();
+    },1000);
+}
+function pullUpAction(){
+    spinner.style.display = "block";
+    setTimeout(function(){
+        spinner.style.display = "none";
+        myScroll.refresh();
+    },1000);
+}
+function updatePosition(){
+pullDown.innerHTML = this.y>>0;
+}
+document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+}, false);
+document.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+}, false);
+myScroll.on('scroll',positionJudge);
+myScroll.on("scrollEnd",action);
+</script>
+
+</head>
+<body onload="loaded()">
+
+<div id="wrapper">
+  <div id="scroller" class="commentBox">
+    <div id="pullDown"> <span>下拉刷新…</span> </div>
+    <div class="comment-word">
+      <div><textarea class="comment-ipt" placeholder="我也来点评几句...."></textarea></div>
+      <div class="com-btn tab"><a href="javascript:;" class="tj">提交评论</a></div>
+    </div>
+    <ul id="list" style="padding-bottom:1rem;">
+      <li>
+        <div class="commentList">
+          <div class="pic"><img src="images/touxiang.png" /></div>
+          <div class="commentTxt">
+            <div class="tab"><span class="fr grey_s">2015-10-16</span><span class="fl font1_6 txt-gre-s">高冷大叔</span></div>
+            <div class="tab">评论：<span>感觉不错感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊啊</span></div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="commentList">
+          <div class="pic"><img src="images/touxiang.png" /></div>
+          <div class="commentTxt">
+            <div class="tab"><span class="fr grey_s">2015-10-16</span><span class="fl font1_6 txt-gre-s">高冷大叔</span></div>
+            <div class="tab">评论：<span>感觉不错感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊啊</span></div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="commentList">
+          <div class="pic"><img src="images/touxiang.png" /></div>
+          <div class="commentTxt">
+            <div class="tab"><span class="fr grey_s">2015-10-16</span><span class="fl font1_6 txt-gre-s">高冷大叔</span></div>
+            <div class="tab">评论：<span>感觉不错感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊啊</span></div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="commentList">
+          <div class="pic"><img src="images/touxiang.png" /></div>
+          <div class="commentTxt">
+            <div class="tab"><span class="fr grey_s">2015-10-16</span><span class="fl font1_6 txt-gre-s">高冷大叔</span></div>
+            <div class="tab">评论：<span>感觉不错感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊啊</span></div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="commentList">
+          <div class="pic"><img src="images/touxiang.png" /></div>
+          <div class="commentTxt">
+            <div class="tab"><span class="fr grey_s">2015-10-16</span><span class="fl font1_6 txt-gre-s">高冷大叔</span></div>
+            <div class="tab">评论：<span>感觉不错感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊啊</span></div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="commentList">
+          <div class="pic"><img src="images/touxiang.png" /></div>
+          <div class="commentTxt">
+            <div class="tab"><span class="fr grey_s">2015-10-16</span><span class="fl font1_6 txt-gre-s">高冷大叔</span></div>
+            <div class="tab">评论：<span>感觉不错感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊啊</span></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div id="pullUp"><span>123</span></div>
+  </div>
+</div>
+<div id="spinner">
+  <div class="loading-box">
+    <div class="list-loading-icon">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

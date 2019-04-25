@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>预约猫  {_FOREACH typelist} {_name} {ENDFOR}</title>
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/response.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/cat16.ico" type="image/x-icon"/>
+    <meta name="keywords" content="预约猫  {_FOREACH typelist} ,{_name} {ENDFOR}"/>
+    <meta name="description" content="预约猫让您不再排队，享受VIP般的尊贵服务，不用现场排队，不用现场买单
+预约猫让商家的资源使用高效而有秩序，通过预约，让时间变得可管理、有序的客流让你不会太闲也不会太忙。"/>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?83fc41ced71de2d6a049a7b2bc8ea112";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </head>
+  <body>
+<div style ='margin:0 auto;width:0px;height:0px;overflow:hidden;  '>
+
+<img src="images/jrwm.jpg" />
+
+</div>
+
+    <div class="maincont">
+      
+     <div class="head-top">
+      <img src="images/head.jpg" width="100%" />
+      <dl>
+       <dt><a href="user.html"><img src=" images/touxiang.jpg"/></a></dt>
+       <dd>
+        <h1 class="username">{_IF custname} {_custname} {ELSE} 教育预约平台 {ENDIF}</h1>
+        <ul>
+         <li><a href="index.php?act=prolist"><strong>34</strong><p>全部商家</p></a></li>
+         <li><a href="index.php?act=topicList&id=0"><span class="glyphicon glyphicon-fire red"></span><p>召唤峡谷</p></a></li>
+         <li style="background:none;"><a href="index.php?act=index&xian=1"><span class="glyphicon glyphicon-heart"  {_IF xian} style="color: red" {ENDIF}></span><p>闲时价</p></a></li>
+         <div class="clearfix"></div>
+        </ul>
+       </dd>
+       <div class="clearfix"></div>
+      </dl>
+     </div><!--head-top/-->
+    <form action="index.php?act=index" method="get" class="search">
+      <input type="hidden" name="act" value="index" class="seaText fl" />
+      <span class="seaSub1 fl"><a href="index.php?act=city"><font color="#f60"><b>{_city}</b></font></a></span>
+      <input type="text" name="keyword" class="seaText " />
+      <input type="submit" value="搜索" class="seaSub fr" />
+     </form>
+     <!--search/-->
+     {_IF custid>0}
+
+     {ELSE}
+     <ul class="reg-login-click">
+      <li><a href="index.php?act=login">登录</a></li>
+      <li><a href="index.php?act=reg" class="rlbg">注册</a></li>
+      <div class="clearfix"></div>
+     </ul><!--reg-login-click/-->
+     {ENDIF}
+    
+   <!--<div id="sliderA" class="slider">
+      <img src="images/image1.jpg" />
+      <img src="images/image2.jpg" />
+      <img src="images/image3.jpg" />
+      <img src="images/image4.jpg" />
+      <img src="images/image5.jpg" />
+     </div>
+    <!--sliderA/-->
+    <ul class="pronav">
+      {_FOREACH typelist}
+      <li><a href="index.php?act=prolist&tid={_id}">{_name}</a></li>
+      {ENDFOR}
+     
+      <div class="clearfix"></div>
+     </ul><!--pronav/-->
+    <div class="index-pro1">
+         {_IF xian}
+
+       {_FOREACH prodlist}
+      <div class="index-pro1-list">
+       <dl>
+        <dt><a href="index.php?act=serviceinfo&id={_id}"><img src="../{_pic}" /></a></dt>
+        
+        <dd class="ip-text"><a href="index.php?act=serviceinfo&id={_id}">{_name}</a>
+        </dd><dd><small>{_address}</small><!--span>闲时价时段:每周 {_stopweekday} {_begin1}-{_end1}</span--> </dd>
+        <dd class="ip-price"><strong>¥{_price}</strong> <span>{_price1}</span></dd>
+       </dl>
+      </div>
+      {ENDFOR}
+      {ELSE}
+     {_FOREACH prodlist}
+
+<div class="index-pro1-list">
+       <dl>
+      <dt><a href="index.php?act=serviceinfo&id={_id}"><img src="../{_pic}" /></a></dt>
+        <dd class="ip-text"><a href="index.php?act=serviceinfo&id={_id}">{_name}</a></dd>
+        <dd><small>{_address} </small><!--span>营业时间:{_begin1}-{_end1} {_IF begin2} {_begin2}-{_end2} {ENDIF}</span-->  </dd>
+        <dd class="ip-price"><strong>¥{_price}</strong> <span>{_price1}</span></dd>
+       </dl>
+      </div>
+ {ENDFOR}
+      {ENDIF}
+
+      <div class="clearfix"></div>
+     </div><!--index-pro1/-->
+  
+    <!--index-pro1/-->
+
+    <!-- <div class="prolist">
+   
+      <dl>
+       <dt><a href="index.php?act=serviceinfo&id={_id}"><img src="../{_pic}" width="100" height="100" /></a></dt>
+       <dd>
+        <h3><a href="index.php?act=serviceinfo&id={_id}">{_name}</a> <small>{_address}</small></h3>
+        <div class="prolist-price">闲时价: <strong>¥{_price}</strong><span class="price1">{_price1}</span><span>预订单位：{_unit}分钟</span></div>
+        <div class="prolist-yishou"><em>闲时价时段:每周 {_stopweekday} {_begin1}-{_end1}</em></div>
+      
+       </dd>
+       <div class="clearfix"></div>
+      </dl>
+     
+      <dl>
+       <dt><a href="index.php?act=serviceinfo&id={_id}"><img src="../{_pic}" width="100" height="100" /></a></dt>
+       <dd>
+        <h3><a href="index.php?act=serviceinfo&id={_id}">{_name}</a> <small>{_address}</small></h3>
+        <div class="prolist-price"><strong>¥{_price}</strong> <span>最小预订时间：{_unit}分钟</span></div>
+        <div class="prolist-yishou"><em>营业时间:{_begin1}-{_end1} {_IF begin2} {_begin2}-{_end2} {ENDIF}</em></div>
+      
+       </dd>
+       <div class="clearfix"></div>
+      </dl>
+    
+     </div> --><!--prolist/-->
+
+    
+     {_INCLUDE foot.html}
+    </div><!--maincont-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <!--焦点轮换-->
+    <script src="js/jquery.excoloSlider.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+     <script src="js/pinto.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+<script>  
+
+
+  /*
+   * 注意：
+   * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+   * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+   * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+   *
+   * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+   * 邮箱地址：weixin-open@qq.com
+   * 邮件主题：【微信JS-SDK反馈】具体问题
+   * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+   */
+  wx.config({
+    debug: false,
+    appId: '{_signPackage.appId}',//'<?php echo $signPackage["appId"];?>',
+    timestamp: '{_signPackage.timestamp}',//'<?php echo $signPackage["timestamp"];?>,
+    nonceStr: '{_signPackage.nonceStr}',//''<?php echo $signPackage["nonceStr"];?>',
+    signature: '{_signPackage.signature}',//''<?php echo $signPackage["signature"];?>',
+    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','onMenuShareQZone'
+      // 所有要调用的 API 都要加到这个列表中
+    ]
+  });
+
+
+
+  wx.ready(function () {
+    // 在这里调用 API
+        wx.onMenuShareTimeline({
+        title: '预约猫-未来尽在掌握', // 分享标题
+         desc: "附近海量优质老师任你选，小学，初中，高中，没有最好，只有最适合", // 分享描述
+        link: 'https://yuyuemao.cn/app/index.php?act=index', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/jrwm.jpg', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+        title: '{_IF xian} 闲时价服务 {ENDIF}预约猫-教育预约平台', // 分享标题
+        desc: '附近海量优质老师任你选，小学，初中，高中，没有最好，只有最适合', // 分享描述
+        link: 'https://yuyuemao.cn/app/index.php?act=index', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/jrwm.jpg', // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+        // 用户取消分享后执行的回调函数
+        }
+        });
+
+        wx.onMenuShareQQ({
+        title: '预约猫-未来尽在掌握', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=index', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/jrwm.jpg', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareWeibo({
+        title: '预约猫-未来尽在掌握', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=index', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/jrwm.jpg', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareQZone({
+        title: '预约猫-未来尽在掌握', // 分享标题
+        link: 'https://yuyuemao.cn/app/index.php?act=index', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://yuyuemao.cn/app/images/jrwm.jpg', // 分享图标
+        success: function () {
+        // 用户确认分享后执行的回调函数
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+            }
+        });
+
+
+
+  });
+
+		$(function () {
+		 $("#sliderA").excoloSlider();
+
+    
+		});
+
+window.onload=function(){ 
+
+ $(".index-pro1").pinto({
+      itemSelector: '.index-pro1-list',
+              itemWidth: 150,         
+              marginX: 10,                
+              marginY: 10,                
+              align: 'center',                
+              fitWidth: true,                
+              animate: true,               
+              autoResize: true,           
+              resizeDelay: 50
+          });
+} 
+
+	</script>
+  </body>
+</html>

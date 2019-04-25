@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>预约猫</title>
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/response.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?83fc41ced71de2d6a049a7b2bc8ea112";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </head>
+  <body>
+    <div class="maincont">
+     <header>
+      <a href="javascript:history.back(-1)" class="back-off fl"><span class="glyphicon glyphicon-menu-left"></span></a>
+      <div class="head-mid">
+       <h1>订单确认</h1>
+      </div>
+     </header>
+     <div class="head-top">
+      <img src="images/head.jpg" />
+     </div><!--head-top/-->
+     <div class="dingdanlist" >
+      <form action="index.php?act=pay" method="post" accept-charset="utf-8" id="fm1">
+      
+      <table>
+       <!--
+       <tr>
+        <td class="dingimg" width="75%" colspan="2">新增收货地址</td>
+        <td align="right"><img src="images/jian-new.png" /></td>
+       </tr>
+       <tr><td colspan="3" style="height:10px; background:#efefef;padding:0;"></td></tr>
+       <tr>
+        <td class="dingimg" width="75%" colspan="2">选择收货时间</td>
+        <td align="right"><img src="images/jian-new.png" /></td>
+       </tr>
+       <tr><td colspan="3" style="height:10px; background:#efefef;padding:0;"></td></tr>
+       -->
+       <tr>
+        <td class="dingimg" width="50%" >支付方式</td>
+        <td align="right" colspan="2" nowrap><div class="form-group">
+                <label>
+                  <div class="iradio_minimal-blue checked" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="radio" name="payway" class="minimal" checked value="w"><img src="images/weixin.png" alt="" width="28"></div>
+                </label>
+              <!-- <label>
+                  <div class="iradio_minimal-blue checked" aria-checked="false" aria-disabled="false" style="position: relative;">👆浏览器中打开<input type="radio" name="payway" class="minimal"  value="a" ><img src="images/alipai.jpeg" alt="" width="35"> </div>
+                </label>-->
+                <input type="hidden" name="totle" value="{_totle}">
+               
+              </div></td>
+       </tr>
+       <tr><td colspan="3" style="height:10px; background:#efefef;padding:0;"></td></tr>
+      <!-- <tr>
+        <td class="dingimg" width="75%" colspan="2">优惠券</td>
+        <td align="right"><span class="hui">无</span></td>
+       </tr>
+       <tr><td colspan="3" style="height:10px; background:#efefef;padding:0;"></td></tr>-->
+       <!--
+       <tr>
+        <td class="dingimg" width="75%" colspan="2">是否需要开发票</td>
+        <td align="right"><a href="javascript:;" class="orange">是</a> &nbsp; <a href="javascript:;">否</a></td>
+       </tr>
+       <tr>
+        <td class="dingimg" width="75%" colspan="2">发票抬头</td>
+        <td align="right"><span class="hui">个人</span></td>
+       </tr>
+       <tr>
+        <td class="dingimg" width="75%" colspan="2">发票内容</td>
+        <td align="right"><a href="javascript:;" class="hui">请选择发票内容</a></td>
+       </tr>
+       <tr><td colspan="3" style="height:10px; background:#fff;padding:0;"></td></tr>-->
+       <tr>
+        <td class="dingimg" width="75%" colspan="3">预订清单</td>
+       </tr>
+       {_FOREACH list}
+       <tr>
+        <td class="dingimg" width="15%"><img src="../{_pic}" /></td>
+        <td width="50%">
+         <h3>{_name}</h3>
+
+         <time>预订时间：{_dt} {_begintime}-{_endtime}  </time>
+        </td>
+        <td align="right"><span class="qingdan">X {_num}</span></td>
+       </tr>
+       
+       <tr>
+        <th colspan="3">单价：<strong class="orange">¥{_price}</strong></th>
+       </tr>
+       <input type="hidden" name="serviceid[]" value="{_id}">
+       <input type="hidden" name="price[]" value="{_price}">
+       <input type="hidden" name="num[]" value="{_num}">
+       <input type="hidden" name="name[]" value="{_name}">
+       <input type="hidden" name="begintime[]" value="{_dt} {_begintime}:00">
+       <input type="hidden" name="endtime[]" value="{_dt} {_endtime}:00">
+       {ENDFOR}
+       
+       
+       <tr>
+        <td class="dingimg" width="75%" colspan="2">总金额</td>
+        <td align="right"><strong class="orange">¥{_totle}</strong></td>
+       </tr>
+     <!--  <tr>
+        <td class="dingimg" width="75%" colspan="2">折扣优惠</td>
+        <td align="right"><strong class="green">¥0.00</strong></td>
+       </tr>
+       <tr>
+        <td class="dingimg" width="75%" colspan="2">抵扣金额</td>
+        <td align="right"><strong class="green">¥0.00</strong></td>
+       </tr>
+       <tr>
+        <td class="dingimg" width="75%" colspan="2">运费</td>
+        <td align="right"><strong class="orange">¥20.80</strong></td>
+       </tr>-->
+      </table>
+
+        <div class="lrBox">  
+         {_IF mobile}
+       <div class="lrList"><input type="text" name="mobile" id="mobile" placeholder="输入手机号" /></div>
+       {ENDIF}
+       <div class="lrList"><input type="text" name="remark" id="remark" placeholder="订单备注" /></div>
+      
+      </div><!--lrBox/-->
+     
+    </form>
+     </div><!--dingdanlist/-->
+     
+     
+    </div><!--content/-->
+    
+    <div class="height1"></div>
+    <div class="gwcpiao">
+     <table>
+      <tr>
+       <th width="10%"><a href="javascript:history.back(-1)"><span class="glyphicon glyphicon-menu-left"></span></a></th>
+       <td width="50%">总计：<strong class="orange">¥{_totle}</strong></td>
+       <td width="40%"><a href="#" class="jiesuan">提交订单</a></td>
+      </tr>
+     </table>
+    </div><!--gwcpiao/-->
+    </div><!--maincont-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/style.js"></script>
+    <!--jq加减-->
+    <script src="js/jquery.spinner.js"></script>
+   <script>
+	//$('.spinnerExample').spinner({});
+
+function isWeiXin(){ 
+  var ua = window.navigator.userAgent.toLowerCase(); 
+  if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+    return true; 
+    }
+  else{ 
+  return false; 
+  } 
+} 
+
+//alert(isWeiXin());
+   
+  
+
+$(function () {
+   
+    
+
+    $(".jiesuan").click(function(event) {
+     
+     if(!isWeiXin())
+        $("payway").val("a");
+      else
+        $("payway").val("w");
+
+{_IF mobile}
+
+ var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/; 
+    if(!myreg.test($("#mobile").val())) 
+    { 
+        alert('请输入有效的手机号码！'); 
+        return false; 
+    } 
+
+{ENDIF}
+
+$("#fm1").submit();
+        /* Act on the event */
+      //});
+
+    });
+
+  });
+
+	</script>
+  </body>
+</html>
